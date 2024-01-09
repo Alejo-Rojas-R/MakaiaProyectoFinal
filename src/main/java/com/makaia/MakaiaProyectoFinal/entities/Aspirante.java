@@ -1,6 +1,8 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
+import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
@@ -13,77 +15,101 @@ public class Aspirante {
     private Long id ;
 
     @Column(length = 50)
+    @NotNull
     private String programa;
 
     @Column(length = 100)
+    @NotNull
     private String nombre;
 
-    @Column(length = 50)
-    private String tipoDocumento;
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private TipoDocumento tipoDocumento;
 
     @Column(length = 20)
+    @NotNull
     private Integer numDocumento;
 
-    @Column(length = 20)
-    private String genero;
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Genero genero;
 
     @Column(length = 70)
+    @NotNull
     private int edad ;
 
     @Column(length = 6)
+    @NotNull
     private Date nacimiento;
 
     @Column(length = 15)
+    @NotNull
     private Integer celular;
 
     @Column(length = 50)
+    @NotNull
     private String nacionalidad;
 
     @Column(length = 50)
+    @NotNull
     private String departamento;
 
     @Column(length = 50)
+    @NotNull
     private String ciudad;
 
     @Column(length = 50)
+    @NotNull
     private String residencia ;
 
-    @Column(length = 1)
-    private int estrato ;
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Estrato estrato ;
+
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Reconocimiento reconocimiento;
+
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Discapacidad discapacidad ;
+
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Poblacion poblacion;
+
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private NivelEducativo nivelEducativo;
+
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Ocupacion ocupacion ;
 
     @Column(length = 50)
-    private String reconocimiento;
-
-    @Column(length = 50)
-    private String discapacidad ;
-
-    @Column(length = 50)
-    private String poblacion;
-
-    @Column(length = 50)
-    private String nivelEducativo;
-
-    @Column(length = 50)
-    private String ocupacion ;
-
-    @Column(length = 50)
+    @NotNull
     private String tituloAcademico ;
 
     @Column(length = 50)
+    @NotNull
     private String estudioTrabajo;
 
-    @Column(length = 20)
-    private double salario;
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private Salario salario;
 
     @Column(length = 100)
+    @NotNull
     private String tiempoLibre;
 
 
     public Aspirante() {
     }
 
-    public Aspirante(int edad, String nacionalidad, int estrato, String discapacidad,
-                     String nivelEducativo, String ocupacion, double salario) {
+    public Aspirante(@NotNull String programa, @NotNull String nombre, @NotNull int edad, @NotNull String nacionalidad, @NotNull Estrato estrato,@NotNull Discapacidad discapacidad,
+                     @NotNull NivelEducativo nivelEducativo, @NotNull Ocupacion ocupacion, @NotNull Salario salario) {
+        this.programa = programa;
+        this.nombre = nombre;
         this.edad = edad;
         this.nacionalidad = nacionalidad;
         this.estrato = estrato;
@@ -105,23 +131,21 @@ public class Aspirante {
         return nacionalidad;
     }
 
-    public int getEstrato() {
-        return estrato;
-    }
+    public Estrato getEstrato() { return estrato;}
 
-    public String getDiscapacidad() {
+    public Discapacidad getDiscapacidad() {
         return discapacidad;
     }
 
-    public String getNivelEducativo() {
+    public NivelEducativo getNivelEducativo() {
         return nivelEducativo;
     }
 
-    public String getOcupacion() {
+    public Ocupacion getOcupacion() {
         return ocupacion;
     }
 
-    public double getSalario() {
+    public Salario getSalario() {
         return salario;
     }
 
