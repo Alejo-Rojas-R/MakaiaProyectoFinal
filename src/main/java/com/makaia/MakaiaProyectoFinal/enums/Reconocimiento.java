@@ -2,9 +2,10 @@ package com.makaia.MakaiaProyectoFinal.enums;
 
 public enum Reconocimiento {
     NINGUN_GRUPO_ETNICO,
-    INDIGINA,
+    INDIGENA,
     GITANO_O_RROM,
     RAIZAL,
     PALENQUERO,
-    NEGRO_MULATO_AFRODESCENDIENTE_AFROCOLOMBIANO;
+    NEGRO_MULATO_AFRODESCENDIENTE
+
 }

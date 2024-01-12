@@ -6,5 +6,5 @@ public enum NivelEducativo {
     TECNICA,
     TECNOLOGIA,
     PREGRADO,
-    POSGRADO;
+    POSGRADO
 }

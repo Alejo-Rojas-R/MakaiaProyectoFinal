@@ -7,5 +7,5 @@ public enum Discapacidad {
     VISUAL,
     INTELECTUAL,
     PSICOSOCIAL,
-    MULTIPLE;
+    MULTIPLE
 }

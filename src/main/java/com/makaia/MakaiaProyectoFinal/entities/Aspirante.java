@@ -20,7 +20,7 @@ public class Aspirante {
     private String nombre;
 
     @Enumerated(EnumType.STRING)
-    private TipoDeDocumento tipoDocumento;
+    private TipoDocumento tipoDocumento;
 
     @Column(length = 20)
     private Integer numDocumento;
@@ -85,7 +85,7 @@ public class Aspirante {
     public Aspirante() {
     }
 
-    public Aspirante(Programa programa, String nombre, TipoDeDocumento tipoDocumento, Integer numDocumento, Genero genero, int edad, Date nacimiento, Integer celular, String nacionalidad, Departamento departamento, String ciudad, String residencia, Estrato estrato, Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion, String estudioTrabajo, Salario salario, String tiempoLibre, Programador programador, PerfilamientoAspirante perfilamientoAspirante) {
+    public Aspirante(Programa programa, String nombre, TipoDocumento tipoDocumento, Integer numDocumento, Genero genero, int edad, Date nacimiento, Integer celular, String nacionalidad, Departamento departamento, String ciudad, String residencia, Estrato estrato, Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion, String estudioTrabajo, Salario salario, String tiempoLibre, Programador programador, PerfilamientoAspirante perfilamientoAspirante) {
         this.programa = programa;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
@@ -119,7 +119,7 @@ public class Aspirante {
         return nombre;
     }
 
-    public TipoDeDocumento getTipoDocumento() {
+    public TipoDocumento getTipoDocumento() {
         return tipoDocumento;
     }
 

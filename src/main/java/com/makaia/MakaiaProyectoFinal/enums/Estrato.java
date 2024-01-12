@@ -6,5 +6,6 @@ public enum Estrato {
     TRES,
     CUATRO,
     CINCO,
-    SEIS;
+    SEIS
+
 }
