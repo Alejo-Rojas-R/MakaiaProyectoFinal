@@ -14,9 +14,9 @@ public class Aspirante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Column(length = 50)
+    @Enumerated(EnumType.ORDINAL)
     @NotNull
-    private String programa;
+    private Programa programa;
 
     @Column(length = 100)
     @NotNull
@@ -34,7 +34,7 @@ public class Aspirante {
     @NotNull
     private Genero genero;
 
-    @Column(length = 70)
+    @Column(length = 2)
     @NotNull
     private int edad ;
 
@@ -48,23 +48,23 @@ public class Aspirante {
 
     @Column(length = 50)
     @NotNull
-    private String nacionalidad;
+    private String email;
 
-    @Column(length = 50)
+    @Enumerated(EnumType.ORDINAL)
     @NotNull
-    private String departamento;
+    private Departamento departamento;
 
     @Column(length = 50)
     @NotNull
     private String ciudad;
 
-    @Column(length = 50)
+    @Column(length = 80)
     @NotNull
-    private String residencia ;
+    private String direccionResidencia;
 
     @Enumerated(EnumType.ORDINAL)
     @NotNull
-    private Estrato estrato ;
+    private Estrato estrato;
 
     @Enumerated(EnumType.ORDINAL)
     @NotNull
@@ -88,7 +88,7 @@ public class Aspirante {
 
     @Column(length = 50)
     @NotNull
-    private String tituloAcademico ;
+    private String ultimoTituloAcademico ;
 
     @Column(length = 50)
     @NotNull
@@ -102,36 +102,68 @@ public class Aspirante {
     @NotNull
     private String tiempoLibre;
 
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private EstadoAspirante estadoAspirante = EstadoAspirante.PROCESO_DE_PRUEBA;
+
 
     public Aspirante() {
     }
 
-    public Aspirante(@NotNull String programa, @NotNull String nombre, @NotNull int edad, @NotNull String nacionalidad, @NotNull Estrato estrato,@NotNull Discapacidad discapacidad,
-                     @NotNull NivelEducativo nivelEducativo, @NotNull Ocupacion ocupacion, @NotNull Salario salario) {
+    public Aspirante(@NotNull Programa programa, @NotNull String nombre, @NotNull TipoDocumento tipoDocumento,
+                     @NotNull Integer numDocumento, @NotNull Genero genero, @NotNull int edad, @NotNull Date nacimiento,
+                     @NotNull Integer celular, @NotNull String email, @NotNull Departamento departamento,
+                     @NotNull String ciudad, @NotNull String direccionResidencia, @NotNull Estrato estrato,
+                     @NotNull Reconocimiento reconocimiento, @NotNull Discapacidad discapacidad, @NotNull Poblacion poblacion,
+                     @NotNull NivelEducativo nivelEducativo, @NotNull Ocupacion ocupacion, @NotNull String ultimoTituloAcademico,
+                     @NotNull String estudioTrabajo, @NotNull Salario salario, @NotNull String tiempoLibre) {
         this.programa = programa;
         this.nombre = nombre;
+        this.tipoDocumento = tipoDocumento;
+        this.numDocumento = numDocumento;
+        this.genero = genero;
         this.edad = edad;
-        this.nacionalidad = nacionalidad;
+        this.nacimiento = nacimiento;
+        this.celular = celular;
+        this.email = email;
+        this.departamento = departamento;
+        this.ciudad = ciudad;
+        this.direccionResidencia = direccionResidencia;
         this.estrato = estrato;
+        this.reconocimiento = reconocimiento;
         this.discapacidad = discapacidad;
+        this.poblacion = poblacion;
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
+        this.ultimoTituloAcademico = ultimoTituloAcademico;
+        this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
+        this.tiempoLibre = tiempoLibre;
     }
 
     public Long getId() {
         return id;
     }
 
+    public Programa getPrograma() {
+        return programa;
+    }
+
     public int getEdad() {
         return edad;
     }
 
-    public String getNacionalidad() {
-        return nacionalidad;
+    public String getEmail() {
+        return email;
     }
 
-    public Estrato getEstrato() { return estrato;}
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public Estrato getEstrato() {
+        return estrato;
+    }
 
     public Discapacidad getDiscapacidad() {
         return discapacidad;
@@ -149,11 +181,30 @@ public class Aspirante {
         return salario;
     }
 
+    public EstadoAspirante getEstadoAspirante() {
+        return estadoAspirante ;
+    }
+
+    public void setPrograma(Programa programa) {
+        this.programa = programa;
+    }
+
+    public void setCelular(Integer celular) {
+        this.celular = celular;
+    }
+
+    public void setDireccionResidencia(String direccionResidencia) {
+        this.direccionResidencia = direccionResidencia;
+    }
+
+    public void setEstadoAspirante(EstadoAspirante estadoAspirante) {
+        this.estadoAspirante = estadoAspirante;
+    }
 
     @OneToOne(mappedBy = "aspirante")
     private Programador programador;
 
     @OneToOne(mappedBy = "aspirante")
-    private Perfil perfil;
+    private PerfilamientoAspirante perfilamientoAspirante;
 
 }

@@ -2,6 +2,8 @@ package com.makaia.MakaiaProyectoFinal.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -35,5 +37,8 @@ public class Usuario {
     public String getContraseña() {
         return contraseña;
     }
+
+    @OneToMany(mappedBy = "responsablePerfilarManual")
+    List<PerfilamientoAspirante> usuarioResponsable;
 
 }
