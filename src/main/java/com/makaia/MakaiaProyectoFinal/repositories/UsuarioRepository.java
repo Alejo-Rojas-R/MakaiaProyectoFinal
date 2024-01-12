@@ -1,10 +1,10 @@
 package com.makaia.MakaiaProyectoFinal.repositories;
 
+import com.makaia.MakaiaProyectoFinal.entities.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.Optional;
 
-public interface UsuarioRepository extends JpaRepository<User, Long> {
-    Optional<User> findByEmail(String email);
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    Optional<Usuario> findByEmail(String email);
 }

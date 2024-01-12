@@ -28,30 +28,93 @@ public class AspiranteDTO {
     public AspiranteDTO() {
     }
 
-    public AspiranteDTO(int edad, String nacionalidad, int estrato, String discapacidad, String nivelEducativo, String ocupacion, double salario) {
+    public AspiranteDTO(String programa, String nombre, String tipoDocumento, int numDocumento, String genero, int edad, Date nacimiento, Integer celular, String nacionalidad, String departamento, String ciudad, String residencia, int estrato, String reconocimiento, String discapacidad, String poblacion, String nivelEducativo, String ocupacion, String tituloAcademico, String estudioTrabajo, double salario, String tiempoLibre) {
+        this.programa = programa;
+        this.nombre = nombre;
+        this.tipoDocumento = tipoDocumento;
+        this.numDocumento = numDocumento;
+        this.genero = genero;
         this.edad = edad;
+        this.nacimiento = nacimiento;
+        this.celular = celular;
         this.nacionalidad = nacionalidad;
+        this.departamento = departamento;
+        this.ciudad = ciudad;
+        this.residencia = residencia;
         this.estrato = estrato;
+        this.reconocimiento = reconocimiento;
         this.discapacidad = discapacidad;
+        this.poblacion = poblacion;
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
+        this.tituloAcademico = tituloAcademico;
+        this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
+        this.tiempoLibre = tiempoLibre;
+    }
+
+    public String getPrograma() {
+        return programa;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public int getNumDocumento() {
+        return numDocumento;
+    }
+
+    public String getGenero() {
+        return genero;
     }
 
     public int getEdad() {
         return edad;
     }
 
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    public Integer getCelular() {
+        return celular;
+    }
+
     public String getNacionalidad() {
         return nacionalidad;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public String getResidencia() {
+        return residencia;
     }
 
     public int getEstrato() {
         return estrato;
     }
 
+    public String getReconocimiento() {
+        return reconocimiento;
+    }
+
     public String getDiscapacidad() {
         return discapacidad;
+    }
+
+    public String getPoblacion() {
+        return poblacion;
     }
 
     public String getNivelEducativo() {
@@ -62,8 +125,20 @@ public class AspiranteDTO {
         return ocupacion;
     }
 
+    public String getTituloAcademico() {
+        return tituloAcademico;
+    }
+
+    public String getEstudioTrabajo() {
+        return estudioTrabajo;
+    }
+
     public double getSalario() {
         return salario;
+    }
+
+    public String getTiempoLibre() {
+        return tiempoLibre;
     }
 }
 

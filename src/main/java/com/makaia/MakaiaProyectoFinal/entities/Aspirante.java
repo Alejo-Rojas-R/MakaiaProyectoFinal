@@ -1,5 +1,6 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
+import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -12,20 +13,20 @@ public class Aspirante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Column(length = 50)
-    private String programa;
+    @Enumerated(EnumType.STRING)
+    private Programa programa;
 
     @Column(length = 100)
     private String nombre;
 
-    @Column(length = 50)
-    private String tipoDocumento;
+    @Enumerated(EnumType.STRING)
+    private TipoDeDocumento tipoDocumento;
 
     @Column(length = 20)
     private Integer numDocumento;
 
-    @Column(length = 20)
-    private String genero;
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
 
     @Column(length = 70)
     private int edad ;
@@ -39,8 +40,8 @@ public class Aspirante {
     @Column(length = 50)
     private String nacionalidad;
 
-    @Column(length = 50)
-    private String departamento;
+    @Enumerated(EnumType.STRING)
+    private Departamento departamento;
 
     @Column(length = 50)
     private String ciudad;
@@ -48,88 +49,157 @@ public class Aspirante {
     @Column(length = 50)
     private String residencia ;
 
-    @Column(length = 1)
-    private int estrato ;
+    @Enumerated(EnumType.STRING)
+    private Estrato estrato;
 
-    @Column(length = 50)
-    private String reconocimiento;
+    @Enumerated(EnumType.STRING)
+    private Reconocimiento reconocimiento;
 
-    @Column(length = 50)
-    private String discapacidad ;
+    @Enumerated(EnumType.STRING)
+    private Discapacidad discapacidad ;
 
-    @Column(length = 50)
-    private String poblacion;
+    @Enumerated(EnumType.STRING)
+    private Poblacion poblacion;
 
-    @Column(length = 50)
-    private String nivelEducativo;
+    @Enumerated(EnumType.STRING)
+    private NivelEducativo nivelEducativo;
 
-    @Column(length = 50)
-    private String ocupacion ;
-
-    @Column(length = 50)
-    private String tituloAcademico ;
+    @Enumerated(EnumType.STRING)
+    private Ocupacion ocupacion ;
 
     @Column(length = 50)
     private String estudioTrabajo;
 
-    @Column(length = 20)
-    private double salario;
+    @Enumerated(EnumType.STRING)
+    private Salario salario;
 
     @Column(length = 100)
     private String tiempoLibre;
 
+    @OneToOne(mappedBy = "aspirante")
+    private Programador programador;
+
+    @OneToOne(mappedBy = "aspirante")
+    private PerfilamientoAspirante perfilamientoAspirante;
 
     public Aspirante() {
     }
 
-    public Aspirante(int edad, String nacionalidad, int estrato, String discapacidad,
-                     String nivelEducativo, String ocupacion, double salario) {
+    public Aspirante(Programa programa, String nombre, TipoDeDocumento tipoDocumento, Integer numDocumento, Genero genero, int edad, Date nacimiento, Integer celular, String nacionalidad, Departamento departamento, String ciudad, String residencia, Estrato estrato, Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion, String estudioTrabajo, Salario salario, String tiempoLibre, Programador programador, PerfilamientoAspirante perfilamientoAspirante) {
+        this.programa = programa;
+        this.nombre = nombre;
+        this.tipoDocumento = tipoDocumento;
+        this.numDocumento = numDocumento;
+        this.genero = genero;
         this.edad = edad;
+        this.nacimiento = nacimiento;
+        this.celular = celular;
         this.nacionalidad = nacionalidad;
+        this.departamento = departamento;
+        this.ciudad = ciudad;
+        this.residencia = residencia;
         this.estrato = estrato;
+        this.reconocimiento = reconocimiento;
         this.discapacidad = discapacidad;
+        this.poblacion = poblacion;
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
+        this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
+        this.tiempoLibre = tiempoLibre;
+        this.programador = programador;
+        this.perfilamientoAspirante = perfilamientoAspirante;
     }
 
-    public Long getId() {
-        return id;
+    public Programa getPrograma() {
+        return programa;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public TipoDeDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public Integer getNumDocumento() {
+        return numDocumento;
+    }
+
+    public Genero getGenero() {
+        return genero;
     }
 
     public int getEdad() {
         return edad;
     }
 
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    public Integer getCelular() {
+        return celular;
+    }
+
     public String getNacionalidad() {
         return nacionalidad;
     }
 
-    public int getEstrato() {
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public String getResidencia() {
+        return residencia;
+    }
+
+    public Estrato getEstrato() {
         return estrato;
     }
 
-    public String getDiscapacidad() {
+    public Reconocimiento getReconocimiento() {
+        return reconocimiento;
+    }
+
+    public Discapacidad getDiscapacidad() {
         return discapacidad;
     }
 
-    public String getNivelEducativo() {
+    public Poblacion getPoblacion() {
+        return poblacion;
+    }
+
+    public NivelEducativo getNivelEducativo() {
         return nivelEducativo;
     }
 
-    public String getOcupacion() {
+    public Ocupacion getOcupacion() {
         return ocupacion;
     }
 
-    public double getSalario() {
+    public String getEstudioTrabajo() {
+        return estudioTrabajo;
+    }
+
+    public Salario getSalario() {
         return salario;
     }
 
+    public String getTiempoLibre() {
+        return tiempoLibre;
+    }
 
-    @OneToOne(mappedBy = "aspirante")
-    private Programador programador;
+    public Programador getProgramador() {
+        return programador;
+    }
 
-    @OneToOne(mappedBy = "aspirante")
-    private Perfil perfil;
-
+    public PerfilamientoAspirante getPerfil() {
+        return perfilamientoAspirante;
+    }
 }

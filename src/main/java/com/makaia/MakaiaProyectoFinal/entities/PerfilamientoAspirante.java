@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "perfil")
-public class Perfil {
+public class PerfilamientoAspirante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
@@ -18,10 +18,10 @@ public class Perfil {
     @Enumerated(EnumType.ORDINAL)
     private Estado estado;
 
-    public Perfil() {
+    public PerfilamientoAspirante() {
     }
 
-    public Perfil(Aspirante aspirante, Estado estado) {
+    public PerfilamientoAspirante(Aspirante aspirante, Estado estado) {
         this.aspirante = aspirante;
         this.estado = estado;
     }
