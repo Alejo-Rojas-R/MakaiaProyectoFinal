@@ -12,12 +12,10 @@ public class PerfilamientoAspirannteDTO {
     public PerfilamientoAspirannteDTO() {
     }
 
-    public PerfilamientoAspirannteDTO(Long idApirante, String perfilAspirante, String tipoDePerfilamiento,
-                                      Long responsablePerfilarManual) {
+    public PerfilamientoAspirannteDTO(Long idApirante, String perfilAspirante, String tipoDePerfilamiento) {
         this.idApirante = idApirante;
         this.perfilAspirante = perfilAspirante;
         this.tipoDePerfilamiento = tipoDePerfilamiento;
-        this.responsablePerfilarManual = responsablePerfilarManual;
     }
 
     public Long getIdApirante() {

@@ -2,6 +2,7 @@ package com.makaia.MakaiaProyectoFinal.entities;
 
 
 import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
+import com.makaia.MakaiaProyectoFinal.enums.TipoDePerfilamiento;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,8 +21,9 @@ public class PerfilamientoAspirante {
     @NotNull
     private PerfilAspirante perfilAspirante;
 
-    @Column(length = 50, nullable = false)
-    private String tipoDePerfilamiento;
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
+    private TipoDePerfilamiento tipoDePerfilamiento;
 
     @ManyToOne
     private Usuario responsablePerfilarManual;
@@ -30,11 +32,10 @@ public class PerfilamientoAspirante {
     }
 
     public PerfilamientoAspirante(Aspirante aspirante, @NotNull PerfilAspirante perfilAspirante,
-                                  String tipoDePerfilamiento, Usuario responsablePerfilarManual) {
+                                  @NotNull TipoDePerfilamiento tipoDePerfilamiento) {
         this.aspirante = aspirante;
         this.perfilAspirante = perfilAspirante;
         this.tipoDePerfilamiento = tipoDePerfilamiento;
-        this.responsablePerfilarManual = responsablePerfilarManual;
     }
 
     public Long getId() {
@@ -49,7 +50,7 @@ public class PerfilamientoAspirante {
         return perfilAspirante;
     }
 
-    public String getTipoDePerfilamiento() {
+    public TipoDePerfilamiento getTipoDePerfilamiento() {
         return tipoDePerfilamiento;
     }
 
