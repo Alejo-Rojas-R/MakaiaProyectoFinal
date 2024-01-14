@@ -1,12 +1,15 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
+import com.makaia.MakaiaProyectoFinal.enums.*;
+
 import java.util.Date;
 
 public class AspiranteDTO {
-    private String programa;
+    private Long id;
+    private Programa programa;
     private String nombre;
-    private String tipoDocumento;
+    private TipoDocumento tipoDocumento;
     private int numDocumento;
-    private String genero;
+    private Genero genero;
     private int edad;
     private Date nacimiento;
     private Integer celular;
@@ -14,21 +17,22 @@ public class AspiranteDTO {
     private String departamento;
     private String ciudad;
     private String residencia;
-    private int estrato;
-    private String reconocimiento;
-    private String discapacidad;
-    private String poblacion;
-    private String nivelEducativo;
-    private String ocupacion;
+    private Estrato estrato;
+    private Reconocimiento reconocimiento;
+    private Discapacidad discapacidad;
+    private Poblacion poblacion;
+    private NivelEducativo nivelEducativo;
+    private Ocupacion ocupacion;
     private String tituloAcademico;
     private String estudioTrabajo;
-    private double salario;
+    private Salario salario;
     private String tiempoLibre;
 
     public AspiranteDTO() {
     }
 
-    public AspiranteDTO(int edad, String nacionalidad, int estrato, String discapacidad, String nivelEducativo, String ocupacion, double salario) {
+    public AspiranteDTO(String nombre,int edad, String nacionalidad, Estrato estrato, Discapacidad discapacidad, NivelEducativo nivelEducativo, Ocupacion ocupacion, Salario salario, Long id, Programa programa
+    ) {
         this.edad = edad;
         this.nacionalidad = nacionalidad;
         this.estrato = estrato;
@@ -36,6 +40,13 @@ public class AspiranteDTO {
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
         this.salario = salario;
+        this.id=id;
+        this.programa=programa;
+        this.nombre=nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public int getEdad() {
@@ -46,24 +57,32 @@ public class AspiranteDTO {
         return nacionalidad;
     }
 
-    public int getEstrato() {
+    public Estrato getEstrato() {
         return estrato;
     }
 
-    public String getDiscapacidad() {
+    public Discapacidad getDiscapacidad() {
         return discapacidad;
     }
 
-    public String getNivelEducativo() {
+    public NivelEducativo getNivelEducativo() {
         return nivelEducativo;
     }
 
-    public String getOcupacion() {
+    public Ocupacion getOcupacion() {
         return ocupacion;
     }
 
-    public double getSalario() {
+    public Salario getSalario() {
         return salario;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Programa getPrograma() {
+        return programa;
     }
 }
 
