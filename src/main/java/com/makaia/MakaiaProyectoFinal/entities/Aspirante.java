@@ -18,6 +18,7 @@ public class Aspirante {
     @NotNull
     private Programa programa;
 
+
     @Column(length = 100)
     @NotNull
     private String nombre;
@@ -110,13 +111,14 @@ public class Aspirante {
     public Aspirante() {
     }
 
-    public Aspirante(@NotNull Programa programa, @NotNull String nombre, @NotNull TipoDocumento tipoDocumento,
+    public Aspirante(@NotNull Long id, @NotNull Programa programa, @NotNull String nombre, @NotNull TipoDocumento tipoDocumento,
                      @NotNull Integer numDocumento, @NotNull Genero genero, @NotNull int edad, @NotNull Date nacimiento,
                      @NotNull Integer celular, @NotNull String email, @NotNull Departamento departamento,
                      @NotNull String ciudad, @NotNull String direccionResidencia, @NotNull Estrato estrato,
                      @NotNull Reconocimiento reconocimiento, @NotNull Discapacidad discapacidad, @NotNull Poblacion poblacion,
                      @NotNull NivelEducativo nivelEducativo, @NotNull Ocupacion ocupacion, @NotNull String ultimoTituloAcademico,
                      @NotNull String estudioTrabajo, @NotNull Salario salario, @NotNull String tiempoLibre) {
+        this.id =id;
         this.programa = programa;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
@@ -139,6 +141,102 @@ public class Aspirante {
         this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
         this.tiempoLibre = tiempoLibre;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public void setNumDocumento(Integer numDocumento) {
+        this.numDocumento = numDocumento;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    public void setCelular(Integer celular) {
+        this.celular = celular;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setResidencia(String residencia) {
+        this.residencia = residencia;
+    }
+
+    public void setEstrato(Estrato estrato) {
+        this.estrato = estrato;
+    }
+
+    public void setReconocimiento(Reconocimiento reconocimiento) {
+        this.reconocimiento = reconocimiento;
+    }
+
+    public void setDiscapacidad(Discapacidad discapacidad) {
+        this.discapacidad = discapacidad;
+    }
+
+    public void setPoblacion(Poblacion poblacion) {
+        this.poblacion = poblacion;
+    }
+
+    public void setNivelEducativo(NivelEducativo nivelEducativo) {
+        this.nivelEducativo = nivelEducativo;
+    }
+
+    public void setOcupacion(Ocupacion ocupacion) {
+        this.ocupacion = ocupacion;
+    }
+
+    public void setTituloAcademico(String tituloAcademico) {
+        this.tituloAcademico = tituloAcademico;
+    }
+
+    public void setEstudioTrabajo(String estudioTrabajo) {
+        this.estudioTrabajo = estudioTrabajo;
+    }
+
+    public void setSalario(Salario salario) {
+        this.salario = salario;
+    }
+
+    public void setTiempoLibre(String tiempoLibre) {
+        this.tiempoLibre = tiempoLibre;
+    }
+
+    public void setProgramador(Programador programador) {
+        this.programador = programador;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     public Long getId() {
@@ -179,6 +277,16 @@ public class Aspirante {
 
     public Salario getSalario() {
         return salario;
+    }
+
+    public Programa getPrograma() {
+        return programa;
+    }
+    public void setPrograma(@NotNull Programa programa){
+        if (programa == null) {
+            throw new IllegalArgumentException("El programa no puede ser nulo");
+        }
+        this.programa = programa;
     }
 
     public EstadoAspirante getEstadoAspirante() {

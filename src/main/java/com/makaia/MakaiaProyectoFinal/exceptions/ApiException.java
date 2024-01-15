@@ -1,7 +1,5 @@
 package com.makaia.MakaiaProyectoFinal.exceptions;
-
 import org.springframework.http.HttpStatusCode;
-
 public class ApiException extends RuntimeException {
     private HttpStatusCode code;
 
@@ -26,4 +24,5 @@ public class ApiException extends RuntimeException {
     public HttpStatusCode getCode() {
         return code;
     }
+
 }

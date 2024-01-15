@@ -42,8 +42,8 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("api/v1/public/","api/v1/public/**").permitAll()
-                        .requestMatchers("api/v1/private/","api/v1/private/**").authenticated()
+                        .requestMatchers("public/","public/**","aspirantes/**").permitAll()
+                        .requestMatchers("private/","private/**").authenticated()
                 )
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")
