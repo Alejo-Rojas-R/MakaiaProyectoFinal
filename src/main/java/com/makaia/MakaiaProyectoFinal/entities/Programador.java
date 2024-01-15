@@ -16,15 +16,16 @@ public class Programador {
     @JoinColumn(name = "aspirante_id",unique = true)
     private Aspirante aspirante ;
 
-    @Column
+    @Column(nullable = false)
     private boolean pruebaTerminada ;
 
     public Programador() {
     }
 
-    public Programador(int tiempo, Aspirante aspirante) {
+    public Programador(int tiempo, Aspirante aspirante, boolean pruebaTerminada) {
         this.tiempo = tiempo;
         this.aspirante = aspirante;
+        this.pruebaTerminada = pruebaTerminada;
     }
 
     public Long getId() {
@@ -35,16 +36,11 @@ public class Programador {
         return tiempo;
     }
 
-    public boolean isPruebaTerminada() {
-        return pruebaTerminada;
-    }
-
     public Aspirante getAspirante() {
         return aspirante;
     }
 
-    public void setPruebaTerminada(boolean pruebaTerminada) {
-        this.pruebaTerminada = pruebaTerminada;
+    public boolean isPruebaTerminada() {
+        return pruebaTerminada;
     }
-
 }
