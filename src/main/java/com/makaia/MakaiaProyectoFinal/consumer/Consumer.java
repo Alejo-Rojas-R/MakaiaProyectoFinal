@@ -21,6 +21,6 @@ public class Consumer {
     public void receive(@Payload AspiranteDTO aspirante){
 
         System.out.println("Crear un perfil para el aspirante " + aspirante.getNombre());
-        this.perfilamientoService.crearPerfilamiento(aspirante);
+        // this.perfilamientoService.crearPerfilamiento(aspirante);
     }
 }

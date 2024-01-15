@@ -27,15 +27,7 @@ public class PrivateController {
     public ResponseEntity<Aspirante> crear(
             @RequestBody Aspirante aspirante) {
 
-        Aspirante aspiranteCreado = service.crearAspirante(
-                aspirante.getPrograma(),
-                aspirante.getEdad(),
-                aspirante.getNacionalidad(),
-                aspirante.getEstrato(),
-                aspirante.getDiscapacidad(),
-                aspirante.getNivelEducativo(),
-                aspirante.getOcupacion(),
-                aspirante.getSalario());
+        Aspirante aspiranteCreado = service.crearAspirante(aspirante);
 
         return ResponseEntity.ok(aspiranteCreado);
     }

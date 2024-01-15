@@ -18,7 +18,6 @@ public class Aspirante {
     @NotNull
     private Programa programa;
 
-
     @Column(length = 100)
     @NotNull
     private String nombre;
@@ -175,11 +174,7 @@ public class Aspirante {
         this.celular = celular;
     }
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
-
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
 
@@ -187,8 +182,8 @@ public class Aspirante {
         this.ciudad = ciudad;
     }
 
-    public void setResidencia(String residencia) {
-        this.residencia = residencia;
+    public void setResidencia(String direccionResidencia) {
+        this.direccionResidencia = direccionResidencia;
     }
 
     public void setEstrato(Estrato estrato) {
@@ -215,8 +210,8 @@ public class Aspirante {
         this.ocupacion = ocupacion;
     }
 
-    public void setTituloAcademico(String tituloAcademico) {
-        this.tituloAcademico = tituloAcademico;
+    public void setTituloAcademico(String ultimoTituloAcademico) {
+        this.ultimoTituloAcademico = ultimoTituloAcademico;
     }
 
     public void setEstudioTrabajo(String estudioTrabajo) {
@@ -235,16 +230,8 @@ public class Aspirante {
         this.programador = programador;
     }
 
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public Programa getPrograma() {
-        return programa;
     }
 
     public int getEdad() {
@@ -282,12 +269,6 @@ public class Aspirante {
     public Programa getPrograma() {
         return programa;
     }
-    public void setPrograma(@NotNull Programa programa){
-        if (programa == null) {
-            throw new IllegalArgumentException("El programa no puede ser nulo");
-        }
-        this.programa = programa;
-    }
 
     public EstadoAspirante getEstadoAspirante() {
         return estadoAspirante ;
@@ -295,10 +276,6 @@ public class Aspirante {
 
     public void setPrograma(Programa programa) {
         this.programa = programa;
-    }
-
-    public void setCelular(Integer celular) {
-        this.celular = celular;
     }
 
     public void setDireccionResidencia(String direccionResidencia) {

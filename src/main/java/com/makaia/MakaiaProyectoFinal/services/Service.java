@@ -5,7 +5,7 @@ import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import com.makaia.MakaiaProyectoFinal.repositories.AspiranteRepository;
 import com.makaia.MakaiaProyectoFinal.exceptions.ApiException;
-import com.makaia.MakaiaProyectoFinal.repositories.PerfilRepository;
+import com.makaia.MakaiaProyectoFinal.repositories.PerfilamientoAspiranteRepository;
 import com.makaia.MakaiaProyectoFinal.repositories.ProgramadorReposiroty;
 import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,35 +20,14 @@ import java.util.stream.StreamSupport;
 public class Service {
     AspiranteRepository aspiranteRepository;
     ProgramadorReposiroty programadorReposiroty;
-    PerfilRepository perfilRepository;
+    PerfilamientoAspiranteRepository perfilRepository;
     @Autowired
-    public Service(AspiranteRepository aspiranteRepository, ProgramadorReposiroty programadorReposiroty, PerfilRepository perfilRepository) {
+    public Service(AspiranteRepository aspiranteRepository, ProgramadorReposiroty programadorReposiroty, PerfilamientoAspiranteRepository perfilRepository) {
         this.aspiranteRepository = aspiranteRepository;
         this.programadorReposiroty = programadorReposiroty;
         this.perfilRepository = perfilRepository;
     }
-    public Aspirante crearAspirante(
-
-            Programa programa,
-            Integer edad,
-            String nacionalidad,
-            Estrato estrato,
-            Discapacidad discapacidad,
-            NivelEducativo nivelEducativo,
-            Ocupacion ocupacion,
-            Salario salario) {
-
-        Aspirante aspirante = new Aspirante();
-        aspirante.setPrograma(programa);
-        aspirante.setEdad(edad);
-        aspirante.setNacionalidad(nacionalidad);
-        aspirante.setEstrato(estrato);
-        aspirante.setDiscapacidad(discapacidad);
-        aspirante.setNivelEducativo(nivelEducativo);
-        aspirante.setOcupacion(ocupacion);
-        aspirante.setSalario(salario);
-
-
+    public Aspirante crearAspirante(Aspirante aspirante) {
         aspiranteRepository.save(aspirante);
 
         return aspirante;
