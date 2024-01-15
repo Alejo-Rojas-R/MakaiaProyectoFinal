@@ -36,16 +36,11 @@ public class Programador {
         return tiempo;
     }
 
-    public boolean isPruebaTerminada() {
-        return pruebaTerminada;
-    }
-
     public Aspirante getAspirante() {
         return aspirante;
     }
 
-    public void setPruebaTerminada(boolean pruebaTerminada) {
-        this.pruebaTerminada = pruebaTerminada;
+    public boolean isPruebaTerminada() {
+        return pruebaTerminada;
     }
-
 }
