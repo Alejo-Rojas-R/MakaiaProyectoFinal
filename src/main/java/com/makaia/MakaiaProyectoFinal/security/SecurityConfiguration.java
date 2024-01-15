@@ -1,26 +1,5 @@
 package com.makaia.MakaiaProyectoFinal.security;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
 
-<<<<<<< HEAD
-@Configuration
-@EnableWebSecurity
-public class SecurityConfiguration {
-    @Autowired
-    CustomDetailsService customDetailsService;
-=======
 import com.makaia.MakaiaProyectoFinal.entities.Usuario;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -63,8 +42,8 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("api/v1/public/","api/v1/public/**").permitAll()
-                        .requestMatchers("api/v1/private/","api/v1/private/**").authenticated()
+                        .requestMatchers("public/","public/**","aspirantes/**").permitAll()
+                        .requestMatchers("private/","private/**").authenticated()
                 )
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")
@@ -118,27 +97,9 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
->>>>>>> ac98cc61b4f81f26e631edcac5b40859b70c3942
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(8);
     }
-<<<<<<< HEAD
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((authorize) ->{
-                    authorize.requestMatchers("public/**").permitAll();
-                    authorize.requestMatchers("aspirantes/**").permitAll();
-                    //authorize.requestMatchers("aspirantes/**").hasRole("ADMIN");
-                    authorize.anyRequest().authenticated();
-                }).httpBasic(Customizer.withDefaults());
-
-        return httpSecurity.build();
-    }
 }
-=======
-}
->>>>>>> ac98cc61b4f81f26e631edcac5b40859b70c3942
