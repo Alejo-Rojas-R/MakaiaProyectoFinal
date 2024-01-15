@@ -155,6 +155,7 @@ public class Aspirante {
         this.tipoDocumento = tipoDocumento;
     }
 
+
     public void setNumDocumento(Integer numDocumento) {
         this.numDocumento = numDocumento;
     }
@@ -175,11 +176,9 @@ public class Aspirante {
         this.celular = celular;
     }
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
 
-    public void setDepartamento(String departamento) {
+
+    public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
 
@@ -187,9 +186,6 @@ public class Aspirante {
         this.ciudad = ciudad;
     }
 
-    public void setResidencia(String residencia) {
-        this.residencia = residencia;
-    }
 
     public void setEstrato(Estrato estrato) {
         this.estrato = estrato;
@@ -215,10 +211,6 @@ public class Aspirante {
         this.ocupacion = ocupacion;
     }
 
-    public void setTituloAcademico(String tituloAcademico) {
-        this.tituloAcademico = tituloAcademico;
-    }
-
     public void setEstudioTrabajo(String estudioTrabajo) {
         this.estudioTrabajo = estudioTrabajo;
     }
@@ -235,9 +227,7 @@ public class Aspirante {
         this.programador = programador;
     }
 
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
+
 
     public Long getId() {
         return id;
@@ -279,9 +269,6 @@ public class Aspirante {
         return salario;
     }
 
-    public Programa getPrograma() {
-        return programa;
-    }
     public void setPrograma(@NotNull Programa programa){
         if (programa == null) {
             throw new IllegalArgumentException("El programa no puede ser nulo");
@@ -293,13 +280,9 @@ public class Aspirante {
         return estadoAspirante ;
     }
 
-    public void setPrograma(Programa programa) {
-        this.programa = programa;
-    }
 
-    public void setCelular(Integer celular) {
-        this.celular = celular;
-    }
+
+
 
     public void setDireccionResidencia(String direccionResidencia) {
         this.direccionResidencia = direccionResidencia;

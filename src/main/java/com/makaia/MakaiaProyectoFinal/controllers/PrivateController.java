@@ -30,8 +30,8 @@ public class PrivateController {
         Aspirante aspiranteCreado = service.crearAspirante(
                 aspirante.getPrograma(),
                 aspirante.getEdad(),
-                aspirante.getNacionalidad(),
                 aspirante.getEstrato(),
+                aspirante.getDepartamento(),
                 aspirante.getDiscapacidad(),
                 aspirante.getNivelEducativo(),
                 aspirante.getOcupacion(),

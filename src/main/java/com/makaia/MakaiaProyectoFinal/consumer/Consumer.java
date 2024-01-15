@@ -16,11 +16,11 @@ public class Consumer {
     @Autowired
     Service perfilamientoService;
 
-
+/*
     @RabbitListener(queues = {"prueba_tecnica_enviada"}) // user_created: Nombre de la cola que se quiere escuchar
     public void receive(@Payload AspiranteDTO aspirante){
 
         System.out.println("Crear un perfil para el aspirante " + aspirante.getNombre());
         this.perfilamientoService.crearPerfilamiento(aspirante);
-    }
+    }*/
 }

@@ -5,7 +5,7 @@ import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import com.makaia.MakaiaProyectoFinal.repositories.AspiranteRepository;
 import com.makaia.MakaiaProyectoFinal.exceptions.ApiException;
-import com.makaia.MakaiaProyectoFinal.repositories.PerfilRepository;
+import com.makaia.MakaiaProyectoFinal.repositories.PerfilamientoAspiranteRepository;
 import com.makaia.MakaiaProyectoFinal.repositories.ProgramadorReposiroty;
 import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +20,19 @@ import java.util.stream.StreamSupport;
 public class Service {
     AspiranteRepository aspiranteRepository;
     ProgramadorReposiroty programadorReposiroty;
-    PerfilRepository perfilRepository;
+    PerfilamientoAspiranteRepository perfilamientoAspiranteRepository;
     @Autowired
-    public Service(AspiranteRepository aspiranteRepository, ProgramadorReposiroty programadorReposiroty, PerfilRepository perfilRepository) {
+    public Service(AspiranteRepository aspiranteRepository, ProgramadorReposiroty programadorReposiroty, PerfilamientoAspiranteRepository perfilamientoAspiranteRepository) {
         this.aspiranteRepository = aspiranteRepository;
         this.programadorReposiroty = programadorReposiroty;
-        this.perfilRepository = perfilRepository;
+        this.perfilamientoAspiranteRepository = perfilamientoAspiranteRepository;
     }
     public Aspirante crearAspirante(
 
             Programa programa,
             Integer edad,
-            String nacionalidad,
             Estrato estrato,
+            Departamento departamento,
             Discapacidad discapacidad,
             NivelEducativo nivelEducativo,
             Ocupacion ocupacion,
@@ -41,8 +41,8 @@ public class Service {
         Aspirante aspirante = new Aspirante();
         aspirante.setPrograma(programa);
         aspirante.setEdad(edad);
-        aspirante.setNacionalidad(nacionalidad);
         aspirante.setEstrato(estrato);
+        aspirante.setDepartamento(departamento);
         aspirante.setDiscapacidad(discapacidad);
         aspirante.setNivelEducativo(nivelEducativo);
         aspirante.setOcupacion(ocupacion);
