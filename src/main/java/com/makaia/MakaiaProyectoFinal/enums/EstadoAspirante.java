@@ -1,6 +1,6 @@
 package com.makaia.MakaiaProyectoFinal.enums;
 
-public enum Estado {
+public enum EstadoAspirante {
     PROCESO_DE_PRUEBA,
     NO_ADMITIDO_BECA,
     REMITIDO_ENTREVISTA_BECA,

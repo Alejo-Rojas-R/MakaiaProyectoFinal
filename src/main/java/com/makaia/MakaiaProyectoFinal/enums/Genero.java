@@ -1,7 +1,7 @@
 package com.makaia.MakaiaProyectoFinal.enums;
 
 public enum Genero {
-    FEMENINO,
-    MASCULINO,
+    MUJER,
+    HOMBRE,
     OTRO
 }

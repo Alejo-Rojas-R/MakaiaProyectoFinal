@@ -81,4 +81,7 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+    @OneToMany(mappedBy = "responsablePerfilarManual")
+    List<PerfilamientoAspirante> usuarioResponsable;
+
 }

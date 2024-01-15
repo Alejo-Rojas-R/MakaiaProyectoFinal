@@ -21,7 +21,7 @@ public enum Departamento {
     HUILA,
     LA_GUAJIRA,
     MAGDALENA,
-    ΜΕΤΑ,
+    META,
     NARINO,
     NORTE_DE_SANTANDER,
     PUTUMAYO,
@@ -34,5 +34,5 @@ public enum Departamento {
     VALLE_DEL_CAUCA,
     VAUPES,
     VICHADA,
-    RESIDE_FUERA_DE_COLOMBIA;
+    RESIDE_FUERA_DE_COLOMBIA
 }

@@ -16,7 +16,7 @@ public class Programador {
     @JoinColumn(name = "aspirante_id",unique = true)
     private Aspirante aspirante ;
 
-    @Column
+    @Column(nullable = false)
     private boolean pruebaTerminada ;
 
     public Programador() {
