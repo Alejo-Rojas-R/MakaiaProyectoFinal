@@ -1,15 +1,17 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
 
+import com.makaia.MakaiaProyectoFinal.enums.Rol;
+
 public class UsuarioDTO {
 
     private String email;
     private String contrasena;
-    private String rol;
+    private Rol rol;
 
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String email, String contrasena, String rol) {
+    public UsuarioDTO(String email, String contrasena, Rol rol) {
         this.email = email;
         this.contrasena = contrasena;
         this.rol = rol;
@@ -23,7 +25,19 @@ public class UsuarioDTO {
         return contrasena;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }
