@@ -143,6 +143,18 @@ public class Aspirante {
         this.tiempoLibre = tiempoLibre;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUltimoTituloAcademico(String ultimoTituloAcademico) {
+        this.ultimoTituloAcademico = ultimoTituloAcademico;
+    }
+
+    public void setPerfilamientoAspirante(PerfilamientoAspirante perfilamientoAspirante) {
+        this.perfilamientoAspirante = perfilamientoAspirante;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -227,7 +239,65 @@ public class Aspirante {
         this.programador = programador;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public Integer getNumDocumento() {
+        return numDocumento;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    public Integer getCelular() {
+        return celular;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public String getDireccionResidencia() {
+        return direccionResidencia;
+    }
+
+    public Reconocimiento getReconocimiento() {
+        return reconocimiento;
+    }
+
+    public Poblacion getPoblacion() {
+        return poblacion;
+    }
+
+    public String getUltimoTituloAcademico() {
+        return ultimoTituloAcademico;
+    }
+
+    public String getEstudioTrabajo() {
+        return estudioTrabajo;
+    }
+
+    public String getTiempoLibre() {
+        return tiempoLibre;
+    }
+
+    public Programador getProgramador() {
+        return programador;
+    }
+
+    public PerfilamientoAspirante getPerfilamientoAspirante() {
+        return perfilamientoAspirante;
+    }
 
     public Long getId() {
         return id;

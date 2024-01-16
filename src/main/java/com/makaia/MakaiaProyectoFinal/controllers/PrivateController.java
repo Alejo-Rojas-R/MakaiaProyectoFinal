@@ -1,7 +1,7 @@
 package com.makaia.MakaiaProyectoFinal.controllers;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.Programa;
-import com.makaia.MakaiaProyectoFinal.services.Service;
+import com.makaia.MakaiaProyectoFinal.services.AspiranteService;
 import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +17,10 @@ import java.util.List;
 
 
 public class PrivateController {
-    private Service service;
+    private AspiranteService service;
 
     @Autowired
-    public PrivateController(Service service) {
+    public PrivateController(AspiranteService service) {
         this.service = service;
     }
     @PostMapping ("/crear-aspirante")
@@ -28,14 +28,29 @@ public class PrivateController {
             @RequestBody Aspirante aspirante) {
 
         Aspirante aspiranteCreado = service.crearAspirante(
+                aspirante.getId(),
                 aspirante.getPrograma(),
+                aspirante.getNombre(),
+                aspirante.getTipoDocumento(),
+                aspirante.getNumDocumento(),
+                aspirante.getGenero(),
                 aspirante.getEdad(),
-                aspirante.getEstrato(),
+                aspirante.getNacimiento(),
+                aspirante.getCelular(),
+                aspirante.getEmail(),
                 aspirante.getDepartamento(),
+                aspirante.getCiudad(),
+                aspirante.getDireccionResidencia(),
+                aspirante.getEstrato(),
+                aspirante.getReconocimiento(),
                 aspirante.getDiscapacidad(),
+                aspirante.getPoblacion(),
                 aspirante.getNivelEducativo(),
                 aspirante.getOcupacion(),
-                aspirante.getSalario());
+                aspirante.getUltimoTituloAcademico(),
+                aspirante.getEstudioTrabajo(),
+                aspirante.getSalario(),
+                aspirante.getTiempoLibre());
 
         return ResponseEntity.ok(aspiranteCreado);
     }
