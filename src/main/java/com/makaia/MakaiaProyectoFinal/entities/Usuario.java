@@ -24,7 +24,7 @@ public class Usuario implements UserDetails {
     private String contrasena;
 
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    public Rol rol;
 
     public Usuario() {
     }
