@@ -61,9 +61,6 @@ public class AspiranteDTO {
         this.id=id;
     }
 
-    public Programa getPrograma() {
-        return programa;
-    }
 
     public String getNombre() {
         return nombre;
