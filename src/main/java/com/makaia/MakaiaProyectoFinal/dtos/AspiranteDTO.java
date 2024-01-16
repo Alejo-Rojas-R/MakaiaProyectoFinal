@@ -61,6 +61,7 @@ public class AspiranteDTO {
         this.id=id;
     }
 
+
     public String getNombre() {
         return nombre;
     }

@@ -18,6 +18,7 @@ public class Aspirante {
     @NotNull
     private Programa programa;
 
+
     @Column(length = 100)
     @NotNull
     private String nombre;
@@ -142,6 +143,18 @@ public class Aspirante {
         this.tiempoLibre = tiempoLibre;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUltimoTituloAcademico(String ultimoTituloAcademico) {
+        this.ultimoTituloAcademico = ultimoTituloAcademico;
+    }
+
+    public void setPerfilamientoAspirante(PerfilamientoAspirante perfilamientoAspirante) {
+        this.perfilamientoAspirante = perfilamientoAspirante;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -153,6 +166,7 @@ public class Aspirante {
     public void setTipoDocumento(TipoDocumento tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
+
 
     public void setNumDocumento(Integer numDocumento) {
         this.numDocumento = numDocumento;
@@ -174,6 +188,8 @@ public class Aspirante {
         this.celular = celular;
     }
 
+
+
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
@@ -182,9 +198,6 @@ public class Aspirante {
         this.ciudad = ciudad;
     }
 
-    public void setResidencia(String direccionResidencia) {
-        this.direccionResidencia = direccionResidencia;
-    }
 
     public void setEstrato(Estrato estrato) {
         this.estrato = estrato;
@@ -210,10 +223,6 @@ public class Aspirante {
         this.ocupacion = ocupacion;
     }
 
-    public void setTituloAcademico(String ultimoTituloAcademico) {
-        this.ultimoTituloAcademico = ultimoTituloAcademico;
-    }
-
     public void setEstudioTrabajo(String estudioTrabajo) {
         this.estudioTrabajo = estudioTrabajo;
     }
@@ -230,8 +239,72 @@ public class Aspirante {
         this.programador = programador;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public Integer getNumDocumento() {
+        return numDocumento;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    public Integer getCelular() {
+        return celular;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public String getDireccionResidencia() {
+        return direccionResidencia;
+    }
+
+    public Reconocimiento getReconocimiento() {
+        return reconocimiento;
+    }
+
+    public Poblacion getPoblacion() {
+        return poblacion;
+    }
+
+    public String getUltimoTituloAcademico() {
+        return ultimoTituloAcademico;
+    }
+
+    public String getEstudioTrabajo() {
+        return estudioTrabajo;
+    }
+
+    public String getTiempoLibre() {
+        return tiempoLibre;
+    }
+
+    public Programador getProgramador() {
+        return programador;
+    }
+
+    public PerfilamientoAspirante getPerfilamientoAspirante() {
+        return perfilamientoAspirante;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public Programa getPrograma() {
+        return programa;
     }
 
     public int getEdad() {
@@ -266,17 +339,20 @@ public class Aspirante {
         return salario;
     }
 
-    public Programa getPrograma() {
-        return programa;
+    public void setPrograma(@NotNull Programa programa){
+        if (programa == null) {
+            throw new IllegalArgumentException("El programa no puede ser nulo");
+        }
+        this.programa = programa;
     }
 
     public EstadoAspirante getEstadoAspirante() {
         return estadoAspirante ;
     }
 
-    public void setPrograma(Programa programa) {
-        this.programa = programa;
-    }
+
+
+
 
     public void setDireccionResidencia(String direccionResidencia) {
         this.direccionResidencia = direccionResidencia;
