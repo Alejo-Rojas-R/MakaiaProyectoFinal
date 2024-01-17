@@ -140,7 +140,7 @@ public class AspiranteServiceTest {
 
         // Act & Assert
         assertThrows(ApiException.class,
-                () -> aspiranteService.asignarPrograma(aspiranteDTO, programaDummy));
+                () -> aspiranteService.asignarPrograma(aspiranteDTO, programa));
     }
 
 @Test
@@ -166,7 +166,7 @@ void editarPrograma_shouldEditProgramaOfAspirante() {
 
         // Act & Assert
         assertThrows(ApiException.class,
-                () -> aspiranteService.editarPrograma(aspirante.getId(), programaDummy));
+                () -> aspiranteService.editarPrograma(aspirante.getId(), programa));
     }
 
     @Test
