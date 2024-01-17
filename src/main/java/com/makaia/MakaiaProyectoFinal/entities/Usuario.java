@@ -52,6 +52,10 @@ public class Usuario implements UserDetails {
         return List.of(new SimpleGrantedAuthority(rol.name()));
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
     @Override
     public String getPassword() {
         return this.getContrasena();
