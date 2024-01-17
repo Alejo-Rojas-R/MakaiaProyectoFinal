@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/public")
+@RequestMapping("public")
 public class PublicController {
     private final UserService userService;
 
