@@ -34,16 +34,16 @@ public class AspiranteServiceTest {
 
     private Aspirante aspirante;
     private AspiranteDTO aspiranteDTO;
-    private Programa programaDummy;
+    private Programa programa;
 
     @BeforeEach
     void setUp() {
-        programaDummy = Programa.ANALISIS_DATOS;
+        programa = Programa.ANALISIS_DATOS;
         Date nacimiento = new GregorianCalendar(1999, Calendar.JANUARY, 1).getTime();
 
         aspirante = new Aspirante();
         aspirante.setId(1L);
-        aspirante.setPrograma(programaDummy);
+        aspirante.setPrograma(programa);
         aspirante.setNombre("Juan Perez");
         aspirante.setTipoDocumento(TipoDocumento.CEDULA_DE_CIUDADANIA);
         aspirante.setNumDocumento(12345678);
