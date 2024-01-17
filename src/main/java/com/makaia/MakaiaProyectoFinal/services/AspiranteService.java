@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,14 +24,14 @@ public class AspiranteService {
     ProgramadorReposiroty programadorReposiroty;
     PerfilamientoAspiranteRepository perfilamientoAspiranteRepository;
 
-    public AspiranteService() {
-    }
 
     @Autowired
     public AspiranteService(AspiranteRepository aspiranteRepository, ProgramadorReposiroty programadorReposiroty, PerfilamientoAspiranteRepository perfilamientoAspiranteRepository) {
         this.aspiranteRepository = aspiranteRepository;
         this.programadorReposiroty = programadorReposiroty;
         this.perfilamientoAspiranteRepository = perfilamientoAspiranteRepository;
+    }
+    public AspiranteService() {
     }
     public Aspirante crearAspirante(
             Long id,
@@ -83,9 +84,13 @@ public class AspiranteService {
         aspirante.setTiempoLibre(tiempoLibre);
 
 
-        aspiranteRepository.save(aspirante);
+        if (aspirante != null) {
+            aspiranteRepository.save(aspirante);
+        }
 
         return aspirante;
+
+
     }
     public Programa asignarPrograma(AspiranteDTO aspiranteDTO, Programa programa){
         if (programa == null ) {
