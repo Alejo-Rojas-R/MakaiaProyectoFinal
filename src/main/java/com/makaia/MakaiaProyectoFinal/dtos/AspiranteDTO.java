@@ -165,5 +165,8 @@ public class AspiranteDTO {
         this.direccionResidencia = direccionResidencia;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
 
