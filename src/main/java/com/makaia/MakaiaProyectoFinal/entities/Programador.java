@@ -32,5 +32,4 @@ public class Programador {
     public void setPruebaTerminada(boolean pruebaTerminada) {
         this.pruebaTerminada = pruebaTerminada;
     }
-
 }

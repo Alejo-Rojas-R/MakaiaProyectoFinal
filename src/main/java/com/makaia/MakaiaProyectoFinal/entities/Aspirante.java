@@ -4,12 +4,14 @@ import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "aspirante")
 public class Aspirante {
 
@@ -47,7 +49,6 @@ public class Aspirante {
 
     @Column(length = 6)
     @NotNull
-
     private Date nacimiento;
 
     @Column(length = 15)
@@ -154,9 +155,7 @@ public class Aspirante {
         this.programa = programa;
     }
 
-    public void setCelular(Integer celular) {
-        this.celular = celular;
-    }
+
 
     public void setDireccionResidencia(String direccionResidencia) {
         this.direccionResidencia = direccionResidencia;

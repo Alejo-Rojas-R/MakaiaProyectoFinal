@@ -10,6 +10,7 @@ import java.util.Date;
 public class AspiranteDTO {
 
     private String idAspirantePrueba;
+    private Long id;
     private Programa programa;
     private String nombre;
     private TipoDocumento tipoDocumento;
@@ -37,8 +38,7 @@ public class AspiranteDTO {
     public AspiranteDTO() {
     }
 
-
-    public AspiranteDTO(Programa programa, String nombre, TipoDocumento tipoDocumento, Integer numDocumento,
+    public AspiranteDTO(Long id ,Programa programa, String nombre, TipoDocumento tipoDocumento, Integer numDocumento,
                         Genero genero, int edad, Date nacimiento, Integer celular, String email, Departamento departamento,
                         String ciudad, String direccionResidencia, Estrato estrato, Reconocimiento reconocimiento,
                         Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion,
@@ -65,6 +65,7 @@ public class AspiranteDTO {
         this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
         this.tiempoLibre = tiempoLibre;
+        this.id=id;
     }
 
     public boolean validarSiAplicaParaBeca(AspiranteDTO dto){

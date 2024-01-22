@@ -1,19 +1,22 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
 
+import com.makaia.MakaiaProyectoFinal.enums.Rol;
 import lombok.Getter;
 
 @Getter
 public class UsuarioDTO {
 
     private String email;
-    private String contraseña;
+    private String contrasena;
+    private Rol rol;
 
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String email, String contraseña) {
+    public UsuarioDTO(String email, String contrasena, Rol rol) {
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
+        this.rol = rol;
     }
 
 }

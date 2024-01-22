@@ -21,7 +21,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Slf4j
@@ -100,7 +102,92 @@ public class Service extends AbstractClient {
         throw new ApiException("Error no fue posible obtener los datos", HttpStatusCode.valueOf(400));
     }
 
+    public Aspirante crearAspirante(
+            Long id,
+            Programa programa,
+            String nombre,
+            TipoDocumento tipoDocumento,
+            Integer numDocumento,
+            Genero genero,
+            int edad,
+            Date nacimiento,
+            Integer celular,
+            String email,
+            Departamento departamento,
+            String ciudad,
+            String direccionResidencia,
+            Estrato estrato,
+            Reconocimiento reconocimiento,
+            Discapacidad discapacidad,
+            Poblacion poblacion,
+            NivelEducativo nivelEducativo,
+            Ocupacion ocupacion,
+            String ultimoTituloAcademico,
+            String estudioTrabajo,
+            Salario salario,
+            String tiempoLibre) {
 
+        Aspirante aspirante = new Aspirante();
+        aspirante.setId(id);
+        aspirante.setPrograma(programa);
+        aspirante.setNombre(nombre);
+        aspirante.setTipoDocumento(tipoDocumento);
+        aspirante.setNumDocumento(numDocumento);
+        aspirante.setGenero(genero);
+        aspirante.setEdad(edad);
+        aspirante.setNacimiento(nacimiento);
+        aspirante.setCelular(celular);
+        aspirante.setEmail(email);
+        aspirante.setDepartamento(departamento);
+        aspirante.setCiudad(ciudad);
+        aspirante.setDireccionResidencia(direccionResidencia);
+        aspirante.setEstrato(estrato);
+        aspirante.setReconocimiento(reconocimiento);
+        aspirante.setDiscapacidad(discapacidad);
+        aspirante.setPoblacion(poblacion);
+        aspirante.setNivelEducativo(nivelEducativo);
+        aspirante.setOcupacion(ocupacion);
+        aspirante.setUltimoTituloAcademico(ultimoTituloAcademico);
+        aspirante.setEstudioTrabajo(estudioTrabajo);
+        aspirante.setSalario(salario);
+        aspirante.setTiempoLibre(tiempoLibre);
+
+
+        if (aspirante != null) {
+            aspiranteRepository.save(aspirante);
+        }
+
+        return aspirante;
+
+
+    }
+    public Programa asignarPrograma(AspiranteDTO aspiranteDTO, Programa programa){
+        if (programa == null ) {
+            throw new IllegalArgumentException("El programa no puede ser nulo o vacío");
+        }
+        Aspirante aspirante = this.aspiranteRepository.findById(aspiranteDTO.getId()).orElseThrow(
+                () -> new ApiException("El aspirante no existe")
+        );
+        aspirante.setPrograma(programa);
+        aspiranteRepository.save(aspirante);
+        return programa;
+    }
+    public Aspirante editarPrograma(Long idAspirante, Programa programa) {
+
+        Aspirante aspirante = aspiranteRepository.findById(idAspirante).orElseThrow(
+                () -> new ApiException("El aspirante no existe")
+        );
+
+        aspirante.setPrograma(programa);
+
+        return aspiranteRepository.save(aspirante);
+    }
+
+    public List<Aspirante> listarAspirantes() {
+        return StreamSupport
+                .stream(aspiranteRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+    }
 
 
 
