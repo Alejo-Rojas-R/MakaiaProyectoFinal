@@ -1,5 +1,10 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ResponseErrorDTO {
     private String message;
 
@@ -10,19 +15,4 @@ public class ResponseErrorDTO {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
 }

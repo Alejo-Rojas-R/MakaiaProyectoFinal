@@ -2,6 +2,7 @@ package com.makaia.MakaiaProyectoFinal.entities;
 
 import com.makaia.MakaiaProyectoFinal.enums.Rol;
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "usuario")
 public class Usuario implements UserDetails {
 
@@ -35,25 +37,9 @@ public class Usuario implements UserDetails {
         this.rol = rol;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(rol.name()));
-    }
-
-    public Rol getRol() {
-        return rol;
     }
 
     @Override

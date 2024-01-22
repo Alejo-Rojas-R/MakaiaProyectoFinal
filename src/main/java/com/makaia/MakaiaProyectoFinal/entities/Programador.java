@@ -1,8 +1,10 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "programador")
 public class Programador {
     @Id
@@ -17,30 +19,17 @@ public class Programador {
     private Aspirante aspirante ;
 
     @Column(nullable = false)
-    private boolean pruebaTerminada ;
+    private boolean pruebaTerminada = false;
 
     public Programador() {
     }
 
-    public Programador(int tiempo, Aspirante aspirante, boolean pruebaTerminada) {
-        this.tiempo = tiempo;
+    public Programador(Aspirante aspirante) {
         this.aspirante = aspirante;
+    }
+
+
+    public void setPruebaTerminada(boolean pruebaTerminada) {
         this.pruebaTerminada = pruebaTerminada;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public int getTiempo() {
-        return tiempo;
-    }
-
-    public Aspirante getAspirante() {
-        return aspirante;
-    }
-
-    public boolean isPruebaTerminada() {
-        return pruebaTerminada;
     }
 }

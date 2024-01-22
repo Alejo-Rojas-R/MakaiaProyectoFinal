@@ -2,11 +2,16 @@ package com.makaia.MakaiaProyectoFinal.entities;
 
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "aspirante")
 public class Aspirante {
 
@@ -14,16 +19,19 @@ public class Aspirante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Column(length = 100)
+    @NotNull
+    private String idAspirantePrueba;
+
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Programa programa;
-
 
     @Column(length = 100)
     @NotNull
     private String nombre;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private TipoDocumento tipoDocumento;
 
@@ -31,7 +39,7 @@ public class Aspirante {
     @NotNull
     private Integer numDocumento;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Genero genero;
 
@@ -47,11 +55,12 @@ public class Aspirante {
     @NotNull
     private Integer celular;
 
-    @Column(length = 50)
+    @Column()
     @NotNull
+    @Email
     private String email;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Departamento departamento;
 
@@ -63,27 +72,27 @@ public class Aspirante {
     @NotNull
     private String direccionResidencia;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Estrato estrato;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Reconocimiento reconocimiento;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Discapacidad discapacidad ;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Poblacion poblacion;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private NivelEducativo nivelEducativo;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Ocupacion ocupacion ;
 
@@ -95,7 +104,7 @@ public class Aspirante {
     @NotNull
     private String estudioTrabajo;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Salario salario;
 
@@ -103,7 +112,7 @@ public class Aspirante {
     @NotNull
     private String tiempoLibre;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private EstadoAspirante estadoAspirante = EstadoAspirante.PROCESO_DE_PRUEBA;
 
@@ -111,14 +120,13 @@ public class Aspirante {
     public Aspirante() {
     }
 
-    public Aspirante(@NotNull Long id, @NotNull Programa programa, @NotNull String nombre, @NotNull TipoDocumento tipoDocumento,
+    public Aspirante(@NotNull Programa programa, @NotNull String nombre, @NotNull TipoDocumento tipoDocumento,
                      @NotNull Integer numDocumento, @NotNull Genero genero, @NotNull int edad, @NotNull Date nacimiento,
                      @NotNull Integer celular, @NotNull String email, @NotNull Departamento departamento,
                      @NotNull String ciudad, @NotNull String direccionResidencia, @NotNull Estrato estrato,
                      @NotNull Reconocimiento reconocimiento, @NotNull Discapacidad discapacidad, @NotNull Poblacion poblacion,
                      @NotNull NivelEducativo nivelEducativo, @NotNull Ocupacion ocupacion, @NotNull String ultimoTituloAcademico,
                      @NotNull String estudioTrabajo, @NotNull Salario salario, @NotNull String tiempoLibre) {
-        this.id =id;
         this.programa = programa;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
@@ -143,214 +151,9 @@ public class Aspirante {
         this.tiempoLibre = tiempoLibre;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setUltimoTituloAcademico(String ultimoTituloAcademico) {
-        this.ultimoTituloAcademico = ultimoTituloAcademico;
-    }
-
-    public void setPerfilamientoAspirante(PerfilamientoAspirante perfilamientoAspirante) {
-        this.perfilamientoAspirante = perfilamientoAspirante;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-
-    public void setNumDocumento(Integer numDocumento) {
-        this.numDocumento = numDocumento;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public void setNacimiento(Date nacimiento) {
-        this.nacimiento = nacimiento;
-    }
-
-    public void setCelular(Integer celular) {
-        this.celular = celular;
-    }
-
-
-
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-
-    public void setEstrato(Estrato estrato) {
-        this.estrato = estrato;
-    }
-
-    public void setReconocimiento(Reconocimiento reconocimiento) {
-        this.reconocimiento = reconocimiento;
-    }
-
-    public void setDiscapacidad(Discapacidad discapacidad) {
-        this.discapacidad = discapacidad;
-    }
-
-    public void setPoblacion(Poblacion poblacion) {
-        this.poblacion = poblacion;
-    }
-
-    public void setNivelEducativo(NivelEducativo nivelEducativo) {
-        this.nivelEducativo = nivelEducativo;
-    }
-
-    public void setOcupacion(Ocupacion ocupacion) {
-        this.ocupacion = ocupacion;
-    }
-
-    public void setEstudioTrabajo(String estudioTrabajo) {
-        this.estudioTrabajo = estudioTrabajo;
-    }
-
-    public void setSalario(Salario salario) {
-        this.salario = salario;
-    }
-
-    public void setTiempoLibre(String tiempoLibre) {
-        this.tiempoLibre = tiempoLibre;
-    }
-
-    public void setProgramador(Programador programador) {
-        this.programador = programador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public TipoDocumento getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public Integer getNumDocumento() {
-        return numDocumento;
-    }
-
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public Date getNacimiento() {
-        return nacimiento;
-    }
-
-    public Integer getCelular() {
-        return celular;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public String getDireccionResidencia() {
-        return direccionResidencia;
-    }
-
-    public Reconocimiento getReconocimiento() {
-        return reconocimiento;
-    }
-
-    public Poblacion getPoblacion() {
-        return poblacion;
-    }
-
-    public String getUltimoTituloAcademico() {
-        return ultimoTituloAcademico;
-    }
-
-    public String getEstudioTrabajo() {
-        return estudioTrabajo;
-    }
-
-    public String getTiempoLibre() {
-        return tiempoLibre;
-    }
-
-    public Programador getProgramador() {
-        return programador;
-    }
-
-    public PerfilamientoAspirante getPerfilamientoAspirante() {
-        return perfilamientoAspirante;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Programa getPrograma() {
-        return programa;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Departamento getDepartamento() {
-        return departamento;
-    }
-
-    public Estrato getEstrato() {
-        return estrato;
-    }
-
-    public Discapacidad getDiscapacidad() {
-        return discapacidad;
-    }
-
-    public NivelEducativo getNivelEducativo() {
-        return nivelEducativo;
-    }
-
-    public Ocupacion getOcupacion() {
-        return ocupacion;
-    }
-
-    public Salario getSalario() {
-        return salario;
-    }
-
-    public void setPrograma(@NotNull Programa programa){
-        if (programa == null) {
-            throw new IllegalArgumentException("El programa no puede ser nulo");
-        }
+    public void setPrograma(Programa programa) {
         this.programa = programa;
     }
-
-    public EstadoAspirante getEstadoAspirante() {
-        return estadoAspirante ;
-    }
-
-
 
 
 

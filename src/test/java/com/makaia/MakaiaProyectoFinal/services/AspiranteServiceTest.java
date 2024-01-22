@@ -6,7 +6,6 @@ import com.makaia.MakaiaProyectoFinal.exceptions.ApiException;
 import com.makaia.MakaiaProyectoFinal.repositories.AspiranteRepository;
 import com.makaia.MakaiaProyectoFinal.repositories.PerfilamientoAspiranteRepository;
 import com.makaia.MakaiaProyectoFinal.repositories.ProgramadorReposiroty;
-import com.makaia.MakaiaProyectoFinal.services.AspiranteService;
 import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +29,7 @@ public class AspiranteServiceTest {
     private PerfilamientoAspiranteRepository perfilamientoAspiranteRepository;
 
     @InjectMocks
-    private AspiranteService aspiranteService;
+    private Service aspiranteService;
 
     private Aspirante aspirante;
     private AspiranteDTO aspiranteDTO;
