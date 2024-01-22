@@ -4,6 +4,7 @@ import com.makaia.MakaiaProyectoFinal.dtos.UsuarioDTO;
 import com.makaia.MakaiaProyectoFinal.entities.Usuario;
 import com.makaia.MakaiaProyectoFinal.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.*;
@@ -21,5 +22,10 @@ public class PublicController {
     @PostMapping("register")
     public Usuario createUser(@RequestBody UsuarioDTO dto) {
         return userService.createUser(dto);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<Usuario> login(@RequestBody UsuarioDTO dto) {
+        return userService.login(dto);
     }
 }

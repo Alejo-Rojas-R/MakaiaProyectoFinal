@@ -3,7 +3,6 @@ package com.makaia.MakaiaProyectoFinal.security;
 import com.makaia.MakaiaProyectoFinal.entities.Usuario;
 import com.makaia.MakaiaProyectoFinal.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,6 +31,7 @@ public class CustomDetailsService implements UserDetailsService {
         UserDetails loggedUser = User
                 .withUsername(user.get().getEmail())
                 .password(user.get().getPassword())
+                .roles(String.valueOf(user.get().getRol()))
                 .build();
 
         return loggedUser;
