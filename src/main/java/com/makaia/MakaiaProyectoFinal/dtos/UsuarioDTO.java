@@ -2,8 +2,10 @@ package com.makaia.MakaiaProyectoFinal.dtos;
 
 import com.makaia.MakaiaProyectoFinal.enums.Rol;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class UsuarioDTO {
 
     private String email;

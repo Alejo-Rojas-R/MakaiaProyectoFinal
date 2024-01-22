@@ -2,7 +2,9 @@ package com.makaia.MakaiaProyectoFinal.dtos;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.validation.constraints.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
 public class AspiranteDTO {
 
     private String idAspirantePrueba;
+    @Setter
     private Long id;
     private Programa programa;
     private String nombre;
