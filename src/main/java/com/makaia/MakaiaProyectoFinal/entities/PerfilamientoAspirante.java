@@ -4,9 +4,11 @@ package com.makaia.MakaiaProyectoFinal.entities;
 import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
 import com.makaia.MakaiaProyectoFinal.enums.TipoDePerfilamiento;
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 @Entity
+@Getter
 @Table(name = "perfilamientoAspirante")
 public class PerfilamientoAspirante {
     @Id
@@ -38,29 +40,7 @@ public class PerfilamientoAspirante {
         this.tipoDePerfilamiento = tipoDePerfilamiento;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public Aspirante getAspirante() {
-        return aspirante;
-    }
-
-    public PerfilAspirante getPerfilAspirante() {
-        return perfilAspirante;
-    }
-
-    public TipoDePerfilamiento getTipoDePerfilamiento() {
-        return tipoDePerfilamiento;
-    }
-
-    public Usuario getResponsablePerfilarManual() {
-        return responsablePerfilarManual;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setPerfilAspirante(PerfilAspirante perfilAspirante) {
         this.perfilAspirante = perfilAspirante;
@@ -68,5 +48,9 @@ public class PerfilamientoAspirante {
 
     public void setResponsablePerfilarManual(Usuario responsablePerfilarManual) {
         this.responsablePerfilarManual = responsablePerfilarManual;
+    }
+
+    public void setTipoDePerfilamiento(TipoDePerfilamiento tipoDePerfilamiento) {
+        this.tipoDePerfilamiento = tipoDePerfilamiento;
     }
 }

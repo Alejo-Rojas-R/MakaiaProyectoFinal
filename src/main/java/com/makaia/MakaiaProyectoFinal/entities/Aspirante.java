@@ -2,11 +2,14 @@ package com.makaia.MakaiaProyectoFinal.entities;
 
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
 @Entity
+@Getter
 @Table(name = "aspirante")
 public class Aspirante {
 
@@ -14,7 +17,11 @@ public class Aspirante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Column(length = 100)
+    @NotNull
+    private String idAspirantePrueba;
+
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Programa programa;
 
@@ -22,7 +29,7 @@ public class Aspirante {
     @NotNull
     private String nombre;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private TipoDocumento tipoDocumento;
 
@@ -30,7 +37,7 @@ public class Aspirante {
     @NotNull
     private Integer numDocumento;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Genero genero;
 
@@ -40,17 +47,19 @@ public class Aspirante {
 
     @Column(length = 6)
     @NotNull
+
     private Date nacimiento;
 
     @Column(length = 15)
     @NotNull
     private Integer celular;
 
-    @Column(length = 50)
+    @Column()
     @NotNull
+    @Email
     private String email;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Departamento departamento;
 
@@ -62,27 +71,27 @@ public class Aspirante {
     @NotNull
     private String direccionResidencia;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Estrato estrato;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Reconocimiento reconocimiento;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Discapacidad discapacidad ;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Poblacion poblacion;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private NivelEducativo nivelEducativo;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Ocupacion ocupacion ;
 
@@ -94,7 +103,7 @@ public class Aspirante {
     @NotNull
     private String estudioTrabajo;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Salario salario;
 
@@ -102,7 +111,7 @@ public class Aspirante {
     @NotNull
     private String tiempoLibre;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private EstadoAspirante estadoAspirante = EstadoAspirante.PROCESO_DE_PRUEBA;
 
@@ -139,50 +148,6 @@ public class Aspirante {
         this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
         this.tiempoLibre = tiempoLibre;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Programa getPrograma() {
-        return programa;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Departamento getDepartamento() {
-        return departamento;
-    }
-
-    public Estrato getEstrato() {
-        return estrato;
-    }
-
-    public Discapacidad getDiscapacidad() {
-        return discapacidad;
-    }
-
-    public NivelEducativo getNivelEducativo() {
-        return nivelEducativo;
-    }
-
-    public Ocupacion getOcupacion() {
-        return ocupacion;
-    }
-
-    public Salario getSalario() {
-        return salario;
-    }
-
-    public EstadoAspirante getEstadoAspirante() {
-        return estadoAspirante ;
     }
 
     public void setPrograma(Programa programa) {

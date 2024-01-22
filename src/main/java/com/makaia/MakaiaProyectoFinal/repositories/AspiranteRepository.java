@@ -14,4 +14,7 @@ public interface AspiranteRepository extends JpaRepository<Aspirante, Long> {
     @Query
     Optional<Aspirante> findByEmail(String email);
 
+    @Query
+    Aspirante findBy(Aspirante aspirante);
+
 }

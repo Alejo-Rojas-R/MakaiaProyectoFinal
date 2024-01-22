@@ -1,10 +1,12 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "usuario")
 public class Usuario {
 
@@ -24,18 +26,6 @@ public class Usuario {
     public Usuario(String email, String contraseña) {
         this.email = email;
         this.contraseña = contraseña;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getContraseña() {
-        return contraseña;
     }
 
     @OneToMany(mappedBy = "responsablePerfilarManual")

@@ -1,5 +1,8 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
 
+import lombok.Getter;
+
+@Getter
 public class UsuarioDTO {
 
     private String email;
@@ -13,11 +16,4 @@ public class UsuarioDTO {
         this.contraseña = contraseña;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
 }
