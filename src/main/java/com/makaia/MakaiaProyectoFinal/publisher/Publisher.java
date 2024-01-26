@@ -1,6 +1,7 @@
 package com.makaia.MakaiaProyectoFinal.publisher;
 
-import com.makaia.MakaiaProyectoFinal.dtos.PerfilamientoAspirannteDTO;
+import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
+import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -17,7 +18,7 @@ public class Publisher {
     @Autowired
     private Queue queue;
 
-    public void send(PerfilamientoAspirannteDTO dto) {
+    public void send(Aspirante dto) {
         this.rabbitTemplate.convertAndSend(queue.getName(), dto);
     }
 }

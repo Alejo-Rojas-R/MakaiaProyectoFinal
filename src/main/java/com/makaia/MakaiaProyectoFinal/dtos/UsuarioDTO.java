@@ -1,7 +1,11 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
 
 import com.makaia.MakaiaProyectoFinal.enums.Rol;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UsuarioDTO {
 
     private String email;
@@ -17,27 +21,4 @@ public class UsuarioDTO {
         this.rol = rol;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
 }

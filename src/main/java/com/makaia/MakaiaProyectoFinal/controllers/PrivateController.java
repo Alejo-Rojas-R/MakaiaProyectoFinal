@@ -1,7 +1,7 @@
 package com.makaia.MakaiaProyectoFinal.controllers;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.Programa;
-import com.makaia.MakaiaProyectoFinal.services.AspiranteService;
+import com.makaia.MakaiaProyectoFinal.services.Service;
 import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +17,10 @@ import java.util.List;
 
 
 public class PrivateController {
-    private AspiranteService service;
+    private Service service;
 
     @Autowired
-    public PrivateController(AspiranteService service) {
+    public PrivateController(Service service) {
         this.service = service;
     }
     @PostMapping ("/crear-aspirante")
@@ -69,6 +69,4 @@ public class PrivateController {
     public List<Aspirante> listarAspirantes() {
         return service.listarAspirantes();
     }
-
-
 }

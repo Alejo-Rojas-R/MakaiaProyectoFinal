@@ -11,5 +11,4 @@ public interface AspiranteRepository extends JpaRepository<Aspirante, Long> {
     public Aspirante findById(long id);
     @Query
     Optional<Aspirante> findByEmail(String email);
-
 }
