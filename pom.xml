@@ -14,7 +14,7 @@
 	<name>MakaiaProyectoFinal</name>
 	<description>Proyect final project</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
