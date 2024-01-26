@@ -45,11 +45,12 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-          aws elasticbeanstalk create-application-version \
-            --application-name makaia \
-            --version-label $GITHUB_SHA \
-            --source-bundle S3Bucket=$GITHUB_REPOSITORY,S3Key=$GITHUB_SHA.zip
-
+           aws elasticbeanstalk create-application-version \
+           --application-name makaia \
+           --version-label $GITHUB_SHA \
+           --source-bundle S3Bucket=elasticbeanstalk-sa-east-1-905418269945,S3Key=makaiaProyectoFinal.jar
+        #   --source-bundle S3Bucket=$GITHUB_REPOSITORY,S3Key=$GITHUB_SHA.zip
+          
           aws elasticbeanstalk update-environment \
             --application-name makaia \
             --environment-name makaia-env \
