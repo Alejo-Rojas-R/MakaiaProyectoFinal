@@ -18,7 +18,7 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
@@ -53,4 +53,4 @@ jobs:
           aws elasticbeanstalk update-environment \
             --application-name makaia \
             --environment-name makaia-env \
-            --version-label $GITHUB_SHA
+            --version-label $GITHUB_SHA $

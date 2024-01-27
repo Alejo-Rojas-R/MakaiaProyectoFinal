@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Consumer {
-
+/*
     @Autowired
     Service service;
 
@@ -20,5 +20,5 @@ public class Consumer {
         System.out.println("Crear un perfil para el aspirante " + aspirante.getNombre());
         this.service.crearPerfilamiento(aspirante);
 
-    }
+    }*/
 }
