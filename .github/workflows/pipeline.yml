@@ -53,4 +53,4 @@ jobs:
           aws elasticbeanstalk update-environment \
             --application-name makaia \
             --environment-name makaia-env \
-            --version-label $GITHUB_SHA $
+            --version-label $GITHUB_SHA
