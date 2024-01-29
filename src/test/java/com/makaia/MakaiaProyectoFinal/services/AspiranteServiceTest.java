@@ -1,5 +1,5 @@
 package com.makaia.MakaiaProyectoFinal.services;
-/*
+
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import com.makaia.MakaiaProyectoFinal.exceptions.ApiException;
@@ -21,6 +21,8 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class AspiranteServiceTest {
+
+    /*
     @Mock
     private AspiranteRepository aspiranteRepository;
     @Mock
@@ -182,6 +184,7 @@ void editarPrograma_shouldEditProgramaOfAspirante() {
         assertEquals(1, retrievedAspirantes.size());
         assertTrue(retrievedAspirantes.contains(aspirante));
     }
+
+     */
 }
 
-*/
