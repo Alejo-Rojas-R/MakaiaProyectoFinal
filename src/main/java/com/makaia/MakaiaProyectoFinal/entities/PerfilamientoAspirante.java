@@ -19,15 +19,15 @@ public class PerfilamientoAspirante {
     @JoinColumn(name = "aspirante_id", unique = true)
     private Aspirante aspirante;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private PerfilAspirante perfilAspirante;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @NotNull
     private TipoDePerfilamiento tipoDePerfilamiento;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Usuario responsablePerfilarManual;
 
     public PerfilamientoAspirante() {

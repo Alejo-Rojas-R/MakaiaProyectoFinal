@@ -13,5 +13,5 @@ public class ResultadosTestGorillaResponseDTO {
     private String contador;
 
     @JsonProperty("results")
-    private List<ResultadoDeAspiranteTestGorillaDTO> resultadosDeAspirantes;
+    private List<ResultadoDeAspiranteTestGorillaDTO> resultadosDeAspirante;
 }
