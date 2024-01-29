@@ -1,21 +1,18 @@
 package com.makaia.MakaiaProyectoFinal.controllers;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
+import com.makaia.MakaiaProyectoFinal.entities.PerfilamientoAspirante;
+import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
 import com.makaia.MakaiaProyectoFinal.enums.Programa;
+import com.makaia.MakaiaProyectoFinal.enums.TipoDePerfilamiento;
 import com.makaia.MakaiaProyectoFinal.services.Service;
 import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
-@RequestMapping("/aspirantes")
-
-
-
+@RequestMapping("private")
 public class PrivateController {
     private Service service;
 
@@ -23,50 +20,57 @@ public class PrivateController {
     public PrivateController(Service service) {
         this.service = service;
     }
-    @PostMapping ("/crear-aspirante")
-    public ResponseEntity<Aspirante> crear(
-            @RequestBody Aspirante aspirante) {
 
-        Aspirante aspiranteCreado = service.crearAspirante(
-                aspirante.getId(),
-                aspirante.getPrograma(),
-                aspirante.getNombre(),
-                aspirante.getTipoDocumento(),
-                aspirante.getNumDocumento(),
-                aspirante.getGenero(),
-                aspirante.getEdad(),
-                aspirante.getNacimiento(),
-                aspirante.getCelular(),
-                aspirante.getEmail(),
-                aspirante.getDepartamento(),
-                aspirante.getCiudad(),
-                aspirante.getDireccionResidencia(),
-                aspirante.getEstrato(),
-                aspirante.getReconocimiento(),
-                aspirante.getDiscapacidad(),
-                aspirante.getPoblacion(),
-                aspirante.getNivelEducativo(),
-                aspirante.getOcupacion(),
-                aspirante.getUltimoTituloAcademico(),
-                aspirante.getEstudioTrabajo(),
-                aspirante.getSalario(),
-                aspirante.getTiempoLibre());
-
-        return ResponseEntity.ok(aspiranteCreado);
-    }
-    @PostMapping("/asignar-programa")
-    public Programa asignarPrograma(@RequestBody AspiranteDTO aspiranteDTO) {
-        Programa programa = aspiranteDTO.getPrograma();
-        return service.asignarPrograma(aspiranteDTO, programa);
-    }
-    @PutMapping ("/editar-programa")
-    public void editarPrograma(@RequestParam Long idAspirante, @RequestParam Programa programa) {
-        service.editarPrograma(idAspirante, programa);
+    @PostMapping("/registrar_aspirante")
+    public Aspirante crearAspirante(@RequestBody AspiranteDTO dto) {
+        return this.service.crearAspirante(dto);
     }
 
+    @GetMapping ("/actualzar_lista_de_pruebas_pendientes_por_finalizar")
+    public ResponseEntity<String> actualizarListaDePruebasPendientesPorFinalizarDeTestGorilla() {
+        return this.service.actualizarListaDePruebasPendientesPorFinalizarDeTestGorilla();
+    }
 
-    @GetMapping ("/listar-aspirantes")
+    @PutMapping ("/modificar_programa")
+    public Aspirante modificarPrograma(@RequestParam("idAspirante") Long idAspirante, @RequestParam("Programa") Programa programa) {
+        return this.service.modificarPrograma(idAspirante, programa);
+    }
+
+    @PutMapping ("/modificar_celular")
+    public Aspirante modificarCelular(@RequestParam("idAspirante") Long idAspirante, @RequestParam("Celular") Integer celular) {
+        return this.service.modificarCelular(idAspirante, celular);
+    }
+
+    @PutMapping ("/modificar_direccion")
+    public Aspirante modificarDireccionDeResidencia(@RequestParam("idAspirante") Long idAspirante, @RequestParam("Celular") String direccionDeResidencia) {
+        return this.service.modificarDireccionDeResidencia(idAspirante, direccionDeResidencia);
+    }
+
+    @PutMapping ("/modificar_perfil_aspirante")
+    public PerfilamientoAspirante modificarPerfilAspirante(@RequestParam("idAspirante") Long idAspirante, @RequestParam("idUsuario") Long idResponsableDePerfilarManual, @RequestParam("Perfil") PerfilAspirante nuevoPerfil) {
+        return this.service.modificarPerfilAspirante(idAspirante, idResponsableDePerfilarManual,nuevoPerfil);
+    }
+
+    @GetMapping ("/listar_aspirantes")
     public List<Aspirante> listarAspirantes() {
-        return service.listarAspirantes();
+        return this.service.listarAspirantes();
     }
+
+    @GetMapping ("/listar_aspirante_por_programa/{programa}")
+    public List<Aspirante> listarPerfilamientoPorPerfil(@PathVariable("programa") Programa programa) {
+        return this.service.listarAspirantesPorPrograma(programa);
+    }
+
+    @GetMapping ("/listar_por_perfil/{perfil}")
+    public List<PerfilamientoAspirante> listarPorPerfil(@PathVariable("perfil") PerfilAspirante perfilAspirante) {
+        return this.service.listarPorPerfil(perfilAspirante);
+    }
+
+    @GetMapping ("/listar_por_tipo_de_perfilamiento/{tipoDePerfil}")
+    public List<PerfilamientoAspirante> listarPorTipoDePerfilamiento(@PathVariable("tipoDePerfil") TipoDePerfilamiento tipoDePerfilamiento) {
+        return this.service.listarPorTipoDePerfilamiento(tipoDePerfilamiento);
+    }
+
+
+
 }
