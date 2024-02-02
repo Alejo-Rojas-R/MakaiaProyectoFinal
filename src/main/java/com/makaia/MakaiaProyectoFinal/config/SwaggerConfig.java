@@ -23,8 +23,8 @@ import org.springframework.context.annotation.Configuration;
                 title = "Evaluación y perfilamiento API"
                 ),
         servers = {
-                //debo reemplazar le url linea 15
-             // @Server(url ="url del servidor que tenemos desplegado hasta el app para permitir el cors", description = "Servidor de producción"),
+
+             @Server(url ="https://makaiaproyectofinal-production.up.railway.app", description = "Servidor de producción"),
                 @Server(url ="http://localhost:8082/", description = "Servidor local")
         }
 )
