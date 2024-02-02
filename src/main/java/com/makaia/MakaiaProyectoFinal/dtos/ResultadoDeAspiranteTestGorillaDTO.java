@@ -7,13 +7,13 @@ import lombok.Data;
 public class ResultadoDeAspiranteTestGorillaDTO {
 
     @JsonProperty("id")
-    private String id;
+    private Integer id;
 
     @JsonProperty("name")
     private String nombreDePrueba;
 
     @JsonProperty("score")
-    private String puntaje;
+    private Integer puntaje;
 
     @JsonProperty("status")
     private String estadoDePrueba;
@@ -22,7 +22,7 @@ public class ResultadoDeAspiranteTestGorillaDTO {
     private String completada;
 
     @JsonProperty("test_id")
-    private String idDePrueba;
+    private Integer idDePrueba;
 
     @JsonProperty("custom_questions")
     private String preguntas;

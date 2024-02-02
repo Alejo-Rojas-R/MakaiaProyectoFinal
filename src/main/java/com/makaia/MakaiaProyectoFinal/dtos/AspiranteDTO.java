@@ -1,51 +1,69 @@
 package com.makaia.MakaiaProyectoFinal.dtos;
-import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.validation.constraints.*;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Date;
-
 @Getter
 public class AspiranteDTO {
 
+    @NotNull
     private String idAspirantePrueba;
-    @Setter
-    private Long id;
+    @NotNull
     private Programa programa;
+    @NotNull
     private String nombre;
+    @NotNull
     private TipoDocumento tipoDocumento;
+    @NotNull
     private Integer numDocumento;
+    @NotNull
     private Genero genero;
+    @NotNull
     private int edad;
+    @NotNull
     private Date nacimiento;
+    @NotNull
     private Integer celular;
+    @NotNull
     @Email(message = "El correo ingresado no es valido")
     private String email;
+    @NotNull
     private Departamento departamento;
+    @NotNull
     private String ciudad;
+    @NotNull
     private String direccionResidencia;
+    @NotNull
     private Estrato estrato;
+    @NotNull
     private Reconocimiento reconocimiento;
+    @NotNull
     private Discapacidad discapacidad;
+    @NotNull
     private Poblacion poblacion;
+    @NotNull
     private NivelEducativo nivelEducativo;
+    @NotNull
     private Ocupacion ocupacion;
+    @NotNull
     private String ultimoTituloAcademico;
+    @NotNull
     private String estudioTrabajo;
+    @NotNull
     private Salario salario;
+    @NotNull
     private String tiempoLibre;
 
     public AspiranteDTO() {
     }
 
-    public AspiranteDTO(Long id ,Programa programa, String nombre, TipoDocumento tipoDocumento, Integer numDocumento,
-                        Genero genero, int edad, Date nacimiento, Integer celular, String email, Departamento departamento,
-                        String ciudad, String direccionResidencia, Estrato estrato, Reconocimiento reconocimiento,
-                        Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion,
-                        String ultimoTituloAcademico, String estudioTrabajo, Salario salario, String tiempoLibre) {
+    public AspiranteDTO(String idAspirantePrueba, Programa programa, String nombre, TipoDocumento tipoDocumento,
+                        Integer numDocumento, Genero genero, int edad, Date nacimiento, Integer celular, String email,
+                        Departamento departamento, String ciudad, String direccionResidencia, Estrato estrato,
+                        Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion,
+                        NivelEducativo nivelEducativo, Ocupacion ocupacion, String ultimoTituloAcademico,
+                        String estudioTrabajo, Salario salario, String tiempoLibre) {
+        this.idAspirantePrueba = idAspirantePrueba;
         this.programa = programa;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
@@ -68,7 +86,6 @@ public class AspiranteDTO {
         this.estudioTrabajo = estudioTrabajo;
         this.salario = salario;
         this.tiempoLibre = tiempoLibre;
-        this.id=id;
     }
 
     public boolean validarSiAplicaParaBeca(AspiranteDTO dto){
@@ -95,17 +112,6 @@ public class AspiranteDTO {
         return edadComercial && estratoComercial && salarioComercial && nivelEducativoComercial;
     }
 
-    public void setPrograma(Programa programa) {
-        this.programa = programa;
-    }
-
-    public void setCelular(Integer celular) {
-        this.celular = celular;
-    }
-
-    public void setDireccionResidencia(String direccionResidencia) {
-        this.direccionResidencia = direccionResidencia;
-    }
 
 }
 

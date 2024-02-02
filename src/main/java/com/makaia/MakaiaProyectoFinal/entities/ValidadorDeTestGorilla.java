@@ -6,13 +6,10 @@ import lombok.Getter;
 @Entity
 @Getter
 @Table(name = "programador")
-public class Programador {
+public class ValidadorDeTestGorilla {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(length = 50)
-    private int tiempo ;
 
     @OneToOne
     @JoinColumn(name = "aspirante_id",unique = true)
@@ -21,10 +18,13 @@ public class Programador {
     @Column(nullable = false)
     private boolean pruebaTerminada = false;
 
-    public Programador() {
+    @Column(nullable = false)
+    private Integer puntajePromedio = 70;
+
+    public ValidadorDeTestGorilla() {
     }
 
-    public Programador(Aspirante aspirante) {
+    public ValidadorDeTestGorilla(Aspirante aspirante) {
         this.aspirante = aspirante;
     }
 
