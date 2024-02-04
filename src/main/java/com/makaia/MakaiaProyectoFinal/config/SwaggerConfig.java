@@ -10,14 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-/*
- -> Acá definen el tipo de seguridad que van a utiilizar. Ésta configuración está para JWT, pero deben consultar como hacerlo para autenticación básica
-@SecurityScheme(
-        type = SecuritySchemeType.HTTP,
-        name = "BearerAuth",
-        scheme = "bearer",
-        bearerFormat = "JWT"
-)*/
+
 @OpenAPIDefinition(
         info=@Info(
                 title = "Evaluación y perfilamiento API"
