@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
                 ),
         servers = {
 
-             @Server(url ="https://makaiaproyectofinal-production.up.railway.app", description = "Servidor de producción"),
+             @Server(url ="https://evaluacion-y-perfilamiento.up.railway.app", description = "Servidor de producción"),
                 @Server(url ="http://localhost:8082/", description = "Servidor local")
         }
 )
