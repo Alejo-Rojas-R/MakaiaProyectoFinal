@@ -11,7 +11,7 @@ Esta API REST de Evaluación y Perfilamiento es un microservicio desarrollado co
 - Integración Continua con Github Actions :octocat: 
 - Despliegue con Railway :bullettrain_side:
 
-Las principales dependencias utilizadas son : 👩‍💻
+Las principales dependencias utilizadas son: 👩‍💻
 
 - Spring Data JPA (Persiste bases de datos SQL utilizando Java Persistence API mediante Spring Data y Hibernate.)
 - Spring Web (Construye aplicaciones web, incluyendo RESTful, utilizando Spring MVC. Utiliza Apache Tomcat como contenedor integrado predeterminado.)
@@ -38,10 +38,7 @@ Todas las acciones permitidas:
 ### DTO (Data Transfer Object):
 Se utiliza este patrón para transferencia de datos entre diferentes capas de la aplicación, y para mejorar la seguridad de la aplicación al controlar qué datos se transfieren.
 
-### State:
-se utiliza este patrón de comportamiento para el manejo del cambio de estado de un envío cambiando así su comportamiento en función de estos estados sin cambiar su estructura, además se articula con la implementación de los tipos de dato especial Enum para definir los valores de los estados ("RECIBIDO", "EN_RUTA", "ENTREGADO") para que de manera que sean fijo en toda la aplicación.
-
-## :computer: Diagrama flujo creación de un envio:
+## :computer: Diagrama flujo:
 
 ![UML](https://github.com/Alejo-Rojas-R/MakaiaProyectoFinal/blob/main/diagramas/Diagrama%20de%20flujo%20evaluaci%C3%B3n%20y%20perfilamiento.png)
 
