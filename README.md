@@ -2,7 +2,7 @@
 
 Esta aplicación fue diseñada en el marco del proyecto integrador del Bootcamp de backend de Makaia como resultado de la implementación de los conocimientos adquiridos en la formación académica.
 
-Esta API REST de Evaluación y Perfilamiento es un microservicio desarrollado con Spring Framework que permite a gestionar la información de los aspirantes que se inscriben a los programas academicos del Bootcamp. La API utiliza el protocolo HTTP para permitir que los usuarios interactúen con el sistema a través de una serie URL definidos. Para diseñar estas solución se emplearon las siguientes tecnologías:
+Esta API REST de Evaluación y Perfilamiento es un microservicio desarrollado con Spring Framework que permite a gestionar la información de los aspirantes que se inscriben a los programas académicos del Bootcamp. La API utiliza el protocolo HTTP para permitir que los usuarios interactúen con el sistema a través de una serie URL definidos. Para diseñar esta solución se emplearon las siguientes tecnologías:
 
 - Java 17 :coffee:
 - Spring Boot :leaves:Versión de 3.2.1
@@ -138,7 +138,80 @@ La API devolverá el nuevo cliente creado en formato JSON:
   "tiempoLibre": "string"
 }
 ```
+### GET: /private/listar_aspirantes
 
+📋 Este endpoint permite listar a todos los aspirantes que se han registrado satisfactoriamente.
+
+##### Sin parámetros de entrada.
+
+Ejemplo de solicitud:
+
+```(https://evaluacion-y-perfilamiento.up.railway.app/private/listar_aspirantes)```
+
+La API devolverá los aspirantes encontrados en formato JSON:
+```json
+[
+{
+    "id": 0,
+    "idAspirantePrueba": "string",
+    "programa": "BACK_END",
+    "nombre": "string",
+    "tipoDocumento": "TARJETA_DE_IDENTIDAD",
+    "numDocumento": 0,
+    "genero": "MUJER",
+    "edad": 0,
+    "nacimiento": "2024-02-10T00:22:26.022Z",
+    "celular": 0,
+    "email": "string",
+    "departamento": "AMAZONAS",
+    "ciudad": "string",
+    "direccionResidencia": "string",
+    "estrato": "UNO",
+    "reconocimiento": "NINGUN_GRUPO_ETNICO",
+    "discapacidad": "NINGUNA",
+    "poblacion": "DESPLAZADO",
+    "nivelEducativo": "PRIMARIA",
+    "ocupacion": "NO_ESTUDIO_NI_TRABAJO",
+    "ultimoTituloAcademico": "string",
+    "estudioTrabajo": "string",
+    "salario": "NO_APLICA",
+    "tiempoLibre": "string",
+    "estadoAspirante": "PROCESO_DE_PRUEBA",
+    "validadorDeTestGorilla": {
+      "id": 0,
+      "aspirante": "string",
+      "pruebaTerminada": true,
+      "puntajePromedio": 0
+    },
+    "perfilamientoAspirante": {
+      "id": 0,
+      "aspirante": "string",
+      "perfilAspirante": "BECADO",
+      "tipoDePerfilamiento": "AUTOMATICO",
+      "responsablePerfilarManual": {
+        "id": 0,
+        "email": "string",
+        "contrasena": "string",
+        "rol": "ADMIN",
+        "usuarioResponsable": [
+          "string"
+        ],
+        "enabled": true,
+        "password": "string",
+        "username": "string",
+        "authorities": [
+          {
+            "authority": "string"
+          }
+        ],
+        "accountNonExpired": true,
+        "accountNonLocked": true,
+        "credentialsNonExpired": true
+      }
+    }
+  }
+]
+```
 ### GET: /private/listar_por_perfil/{perfil}
 
 🕵 Este endpoint permite listar a los aspirantes que tengan un perfil en particular (BECADO, COMERCIAL o PENDIENTE).
