@@ -2,7 +2,7 @@
 
 Esta aplicación fue diseñada en el marco del proyecto integrador del Bootcamp de backend de Makaia como resultado de la implementación de los conocimientos adquiridos en la formación académica.
 
-Esta API REST de Evaluación y Perfilamiento es un microservicio desarrollado con Spring Framework que permite a gestionar la información de los aspirantes que se inscriben a los programas académicos del Bootcamp. La API utiliza el protocolo HTTP para permitir que los usuarios interactúen con el sistema a través de una serie URL definidos. Para diseñar esta solución se emplearon las siguientes tecnologías:
+Esta API REST de Evaluación y Perfilamiento es un microservicio desarrollado con Spring Framework que permite a los usuarios gestionar la información de los aspirantes que se inscriben a los programas académicos del Bootcamp. La API utiliza el protocolo HTTP para permitir que los usuarios interactúen con el sistema a través de una serie URL definidos. Para diseñar esta solución se emplearon las siguientes tecnologías:
 
 - Java 17 :coffee:
 - Spring Boot :leaves:Versión de 3.2.1
