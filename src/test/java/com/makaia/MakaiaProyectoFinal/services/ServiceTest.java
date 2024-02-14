@@ -4,6 +4,7 @@ import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
 import com.makaia.MakaiaProyectoFinal.dtos.ResultadosTestGorillaResponseDTO;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.entities.PerfilamientoAspirante;
+import com.makaia.MakaiaProyectoFinal.entities.Usuario;
 import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
 import com.makaia.MakaiaProyectoFinal.enums.Programa;
 import com.makaia.MakaiaProyectoFinal.enums.TipoDePerfilamiento;
@@ -133,6 +134,22 @@ public class ServiceTest {
         verify(aspiranteRepository).save(mockAspirante);
     }
     @Test
+    public void ejecutarModificarCelularAspirante() {
+        testModificarCelularAspirante();
+    }
+    private void testModificarCelularAspirante() {
+        Long id = 1L;
+        Integer nuevoCelular = 987654321;
+        Aspirante aspirante = new Aspirante();
+        when(aspiranteRepository.findById(id)).thenReturn(Optional.of(aspirante));
+        when(aspiranteRepository.save(aspirante)).thenReturn(aspirante);
+
+        Aspirante updated = service.modificarCelular(id, nuevoCelular);
+
+        assertEquals(nuevoCelular, updated.getCelular());
+        verify(aspiranteRepository).save(aspirante);
+    }
+    @Test
     public void ejecutarTestModificarCelular_aspiranteNoExistente() {
         testModificarCelular_aspiranteNoExistente();
     }
@@ -153,7 +170,22 @@ public class ServiceTest {
 
         assertThrows(ApiException.class, () -> service.modificarPrograma(99L,Programa.CLOUD));
     }
+    @Test
+    public void ejecutarTestModificarDireccionAspirante() {
+        testModificarDireccionAspirante();
+    }
+    void testModificarDireccionAspirante() {
+        Long id = 1L;
+        String nuevaDireccion = "New Address";
+        Aspirante aspirante = new Aspirante();
+        when(aspiranteRepository.findById(id)).thenReturn(Optional.of(aspirante));
+        when(aspiranteRepository.save(aspirante)).thenReturn(aspirante);
 
+        Aspirante updated = service.modificarDireccionDeResidencia(id, nuevaDireccion);
+
+        assertEquals(nuevaDireccion, updated.getDireccionResidencia());
+        verify(aspiranteRepository).save(aspirante);
+    }
     @Test
     public void ejecutarTestModificarDireccionDeResidencia_aspiranteNoExistente() {
         testModificarDireccionDeResidencia_aspiranteNoExistente();
@@ -165,6 +197,33 @@ public class ServiceTest {
         // Act & Assert
         ApiException thrown = assertThrows(ApiException.class, () -> service.modificarDireccionDeResidencia(1L, "New Address"));
         assertEquals("El aspirante no existe", thrown.getMessage());
+    }
+    @Test
+    public void ejecutarTestModificarPerfilAspirante() {
+        testModificarPerfilAspirante();
+    }
+    private void testModificarPerfilAspirante() {
+        Long idAspirante = 1L;
+        Long idResponsable = 1L;
+        PerfilAspirante nuevoPerfil = PerfilAspirante.BECADO;
+        Aspirante aspirante = new Aspirante();
+        Usuario usuario = new Usuario();
+        PerfilamientoAspirante perfilamientoAspirante = new PerfilamientoAspirante();
+        perfilamientoAspirante.setTipoDePerfilamiento(TipoDePerfilamiento.MANUAL);
+        perfilamientoAspirante.setResponsablePerfilarManual(usuario);
+        perfilamientoAspirante.setPerfilAspirante(PerfilAspirante.PENDIENTE);
+
+        when(aspiranteRepository.findById(idAspirante)).thenReturn(Optional.of(aspirante));
+        when(usuarioRepository.findById(idResponsable)).thenReturn(Optional.of(usuario));
+        when(perfilamientoAspiranteRepository.findByAspirante(aspirante)).thenReturn(perfilamientoAspirante);
+        when(perfilamientoAspiranteRepository.save(perfilamientoAspirante)).thenReturn(perfilamientoAspirante);
+
+        PerfilamientoAspirante updated = service.modificarPerfilAspirante(idAspirante, idResponsable, nuevoPerfil);
+
+        assertSame(nuevoPerfil, updated.getPerfilAspirante());
+        assertSame(usuario, updated.getResponsablePerfilarManual());
+        assertEquals(TipoDePerfilamiento.MANUAL, updated.getTipoDePerfilamiento());
+        verify(perfilamientoAspiranteRepository).save(perfilamientoAspirante);
     }
     @Test
     public void ejecutarTestModificarPerfilAspirante_aspiranteNoExistente() {
