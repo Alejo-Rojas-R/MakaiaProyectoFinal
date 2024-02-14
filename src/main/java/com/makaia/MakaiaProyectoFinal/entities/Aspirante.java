@@ -148,6 +148,7 @@ public class Aspirante {
         this.estadoAspirante = estadoAspirante;
     }
 
+    public void setId(Long id) {this.id = id;}
 
     @OneToOne(mappedBy = "aspirante")
     private ValidadorDeTestGorilla validadorDeTestGorilla;

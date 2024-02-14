@@ -4,6 +4,9 @@ import com.makaia.MakaiaProyectoFinal.dtos.AspiranteDTO;
 import com.makaia.MakaiaProyectoFinal.dtos.ResultadosTestGorillaResponseDTO;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.entities.PerfilamientoAspirante;
+import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
+import com.makaia.MakaiaProyectoFinal.enums.Programa;
+import com.makaia.MakaiaProyectoFinal.enums.TipoDePerfilamiento;
 import com.makaia.MakaiaProyectoFinal.exceptions.ApiException;
 import com.makaia.MakaiaProyectoFinal.publisher.Publisher;
 import com.makaia.MakaiaProyectoFinal.repositories.AspiranteRepository;
@@ -21,10 +24,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class ServiceTest {
@@ -71,6 +75,7 @@ public class ServiceTest {
         // Assert
         verify(aspiranteRepository, never()).save(any(Aspirante.class));
     }
+
     @Test
     public void testCrearPerfilamiento() {
         //  Arrange
@@ -109,6 +114,147 @@ public class ServiceTest {
 
         // Assert
         assertEquals(mockResponseDto, result);
+    }
+
+    @Test
+    public void ejecutarTestModificarProgramaConIdValido() {
+        testModificarProgramaConIdValido();
+    }
+    private void testModificarProgramaConIdValido() {
+        Aspirante mockAspirante = new Aspirante();
+        Programa mockPrograma = Programa.BACK_END;
+        when(aspiranteRepository.findById(any())).thenReturn(Optional.of(mockAspirante));
+        when(aspiranteRepository.save(any(Aspirante.class))).thenReturn(mockAspirante);
+
+        Aspirante result = service.modificarPrograma(1L, mockPrograma);
+
+        assertNotNull(result);
+        assertEquals(mockPrograma, result.getPrograma());
+        verify(aspiranteRepository).save(mockAspirante);
+    }
+    @Test
+    public void ejecutarTestModificarCelular_aspiranteNoExistente() {
+        testModificarCelular_aspiranteNoExistente();
+    }
+    void testModificarCelular_aspiranteNoExistente() {
+        // Arrange
+        when(aspiranteRepository.findById(any())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        ApiException thrown = assertThrows(ApiException.class, () -> service.modificarCelular(1L, 123456789));
+        assertEquals("El aspirante no existe", thrown.getMessage());
+    }
+    @Test
+    public void ejecutarTestModificarProgramaConIdInvalido() {
+        testModificarProgramaConIdInvalido();
+    }
+    private void testModificarProgramaConIdInvalido() {
+        when(aspiranteRepository.findById(any())).thenReturn(Optional.empty());
+
+        assertThrows(ApiException.class, () -> service.modificarPrograma(99L,Programa.CLOUD));
+    }
+
+    @Test
+    public void ejecutarTestModificarDireccionDeResidencia_aspiranteNoExistente() {
+        testModificarDireccionDeResidencia_aspiranteNoExistente();
+    }
+    private void testModificarDireccionDeResidencia_aspiranteNoExistente() {
+        // Arrange
+        when(aspiranteRepository.findById(any())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        ApiException thrown = assertThrows(ApiException.class, () -> service.modificarDireccionDeResidencia(1L, "New Address"));
+        assertEquals("El aspirante no existe", thrown.getMessage());
+    }
+    @Test
+    public void ejecutarTestModificarPerfilAspirante_aspiranteNoExistente() {
+        testModificarPerfilAspirante_aspiranteNoExistente();
+    }
+   private void testModificarPerfilAspirante_aspiranteNoExistente() {
+        // Arrange
+        when(aspiranteRepository.findById(any())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        ApiException thrown = assertThrows(ApiException.class, () -> service.modificarPerfilAspirante(1L, 1L, PerfilAspirante.COMERCIAL));
+        assertEquals("El aspirante no existe", thrown.getMessage());
+    }
+    @Test
+    public void ejecutarTestModificarPerfilAspiranteUsuarioNoExistente() {
+        testModificarPerfilAspiranteUsuarioNoExistente();
+    }
+   private void testModificarPerfilAspiranteUsuarioNoExistente() {
+        // Arrange
+        Aspirante aspirante = new Aspirante();
+        aspirante.setId(1L);
+        when(aspiranteRepository.findById(aspirante.getId())).thenReturn(Optional.of(aspirante));
+        when(usuarioRepository.findById(any())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        ApiException thrown = assertThrows(ApiException.class, () -> service.modificarPerfilAspirante(aspirante.getId(), 1L, PerfilAspirante.BECADO));
+        assertEquals("El usuario no existe", thrown.getMessage());
+    }
+    @Test
+    public void ejecutarTestListarAspirantes() {
+        testListarAspirantes();
+    }
+    private void testListarAspirantes() {
+        List<Aspirante> mockAspirantes = new ArrayList<>();
+        mockAspirantes.add(new Aspirante());
+        when(aspiranteRepository.findAll()).thenReturn(mockAspirantes);
+
+        List<Aspirante> result = service.listarAspirantes();
+
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+    }
+    @Test
+    public void ejecutarTestlistarAspirantesPorPrograma() {
+        testlistarAspirantesPorPrograma();
+    }
+    private void testlistarAspirantesPorPrograma() {
+        // Arrange
+        Aspirante aspirante = new Aspirante();
+        when(aspiranteRepository.findByPrograma(any())).thenReturn(Arrays.asList(aspirante));
+
+        // Act
+        List<Aspirante> aspirantes = service.listarAspirantesPorPrograma(Programa.ANALISIS_DATOS);
+
+        // Assert
+        assertFalse(aspirantes.isEmpty());
+        assertTrue(aspirantes.contains(aspirante));
+    }
+    @Test
+    public void ejecutarTestlistarPorPerfil_debeDevolverListaPorPerfil(){
+        testlistarPorPerfil_debeDevolverListaPorPerfil();
+    }
+    private void testlistarPorPerfil_debeDevolverListaPorPerfil() {
+
+        // Arrange
+        PerfilamientoAspirante perfilamientoAspirante = new PerfilamientoAspirante();
+        when(perfilamientoAspiranteRepository.findByPerfilAspirante(any())).thenReturn(Arrays.asList(perfilamientoAspirante));
+
+        // Act
+        List<PerfilamientoAspirante> perfilamientos = (List<PerfilamientoAspirante>) service.listarPorPerfil(PerfilAspirante.PENDIENTE);
+
+        // Assert
+        assertFalse(perfilamientos.isEmpty());
+        assertTrue(perfilamientos.contains(perfilamientoAspirante));
+    }
+    @Test
+    public void ejecutarTestlistarPorTipoDePerfilamiento_debeDevolverListaDePerfilamientos(){
+        testlistarPorTipoDePerfilamiento_debeDevolverListaDePerfilamientos();
+    }
+    private void testlistarPorTipoDePerfilamiento_debeDevolverListaDePerfilamientos() {
+        // Arrange
+        PerfilamientoAspirante perfilamientoAspirante = new PerfilamientoAspirante();
+        when(perfilamientoAspiranteRepository.findByTipoDePerfilamiento(any())).thenReturn(Collections.singletonList(perfilamientoAspirante));
+
+        // Act
+        List<PerfilamientoAspirante> perfilamientos = service.listarPorTipoDePerfilamiento(TipoDePerfilamiento.MANUAL);
+
+        // Assert
+        assertFalse(perfilamientos.isEmpty());
+        assertTrue(perfilamientos.contains(perfilamientoAspirante));
     }
 
 }
