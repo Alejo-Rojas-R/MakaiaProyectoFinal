@@ -28,9 +28,9 @@ jobs:
       - name: Test with Maven
         run: mvn verify
         env:
-          DATASOURCE_URL=${{var.DATASOURCE_URL}}
-          DATASOURCE_USER=${{var.DATASOURCE_USER}}
-          DATASOURCE_PASS=${{var.DATASOURCE_PASS}}
+          DATASOURCE_URL=${{vars.DATASOURCE_URL}}
+          DATASOURCE_USER=${{vars.DATASOURCE_USER}}
+          DATASOURCE_PASS=${{vars.DATASOURCE_PASS}}
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       # - name: Update dependency graph
