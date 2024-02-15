@@ -23,11 +23,11 @@ Adicionalmente esta API se encuentra documentada con Swagger y podrá probar la 
 
 #### :link:[ Documentación en Swagger - Evaluacion y perfilamiento](https://evaluacion-y-perfilamiento.up.railway.app/swagger-ui/index.html#/)
 
-No olvide tener a mano los permisos de acceso :closed_lock_with_key: de la aplicación:
+No olvidar tener a mano los permisos de acceso :closed_lock_with_key: de la aplicación:
 
 Todas las acciones permitidas:
 - userName: admin@gmail.com
-- password: 123
+- password: admin123
 
 ## :computer: UML Modelo:
 
@@ -48,11 +48,42 @@ Se utiliza este patrón para transferencia de datos entre diferentes capas de la
 
 ## :computer: Endpoints:
 
-## Endpoint de creación de un aspirante :raising_hand:
+## Inicio de sesión 👨‍🔧
+
+### GET: /public/login
+
+🚪 Este endpoint permite dar acceso a la aplicación.
+
+##### Parámetros de entrada:
+
+- email: Email de autenticación (cadena de texto)
+- contrasena: Contraseña de autenticación (cadena de texto)
+
+Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/public/login```
+
+```java 
+{
+    "email": "admin@gmail.com",
+    "contrasena": "admin123"
+}
+```
+
+La API devolverá el JWT token que debera ser copiado para usarlo en los enpoints privados que realizan acciones en la aplicación:
+
+```json
+{
+    "email": "admin@gmail.com",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiIsImV4cCI6MTcwODExMTMyNH0.-ZwyywdhZmbcgln1FHHSYY3O_IRDSoEVXgTAUT08NMA"
+}
+```
+
+## Creación de un aspirante :raising_hand:
 
 ### POST: /private/registrar_aspirante
 
-🙍 **Crear** un nuevo aspirante en la base de datos con la información proporcionada en el cuerpo de la solicitud.
+🙍 Este endpoint permite **Crear** un nuevo aspirante en la base de datos con la información proporcionada en el cuerpo de la solicitud.
 
 ##### Parámetros de entrada:
 
@@ -81,6 +112,8 @@ Se utiliza este patrón para transferencia de datos entre diferentes capas de la
 - tiempoLibre: tiempo libre del aspirante (cadena de texto)
 
 Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/private/registrar_aspirante```
 
 ```java 
 {
@@ -138,6 +171,9 @@ La API devolverá el nuevo cliente creado en formato JSON:
   "tiempoLibre": "string"
 }
 ```
+
+## Listar aspirantes registrados :raising_hand:
+
 ### GET: /private/listar_aspirantes
 
 📋 Este endpoint permite listar a todos los aspirantes que se han registrado satisfactoriamente.
@@ -146,9 +182,10 @@ La API devolverá el nuevo cliente creado en formato JSON:
 
 Ejemplo de solicitud:
 
-```(https://evaluacion-y-perfilamiento.up.railway.app/private/listar_aspirantes)```
+```https://evaluacion-y-perfilamiento.up.railway.app/private/listar_aspirantes```
 
 La API devolverá los aspirantes encontrados en formato JSON:
+
 ```json
 [
 {
@@ -212,6 +249,9 @@ La API devolverá los aspirantes encontrados en formato JSON:
   }
 ]
 ```
+
+## Listar aspirantes registrados por perfil :raising_hand:
+
 ### GET: /private/listar_por_perfil/{perfil}
 
 🕵 Este endpoint permite listar a los aspirantes que tengan un perfil en particular (BECADO, COMERCIAL o PENDIENTE).
@@ -222,7 +262,7 @@ La API devolverá los aspirantes encontrados en formato JSON:
 
 Ejemplo de solicitud:
 
-```(https://evaluacion-y-perfilamiento.up.railway.app/private/listar_por_perfil/BECADO)```
+```https://evaluacion-y-perfilamiento.up.railway.app/private/listar_por_perfil/BECADO```
 
 La API devolverá los aspirantes encontrados en formato JSON:
 ```json
