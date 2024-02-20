@@ -258,7 +258,7 @@ La API devolverá los aspirantes encontrados en formato JSON:
 
 ##### Parámetros de entrada:
 
-- tipoDePerfil : BECADO / COMERCIAL / PENDIENTE (string)
+- perfil : BECADO / COMERCIAL / PENDIENTE (string)
 
 Ejemplo de solicitud:
 
@@ -292,6 +292,138 @@ La API devolverá los aspirantes encontrados en formato JSON:
       "accountNonLocked": true,
       "credentialsNonExpired": true
     }
+  }
+]
+```
+## Listar aspirantes por tipo de perfilamiento :gear: :open_hands:
+
+### GET: /private/listar_por_tipo_de_perfilamiento/{tipoDePerfil}
+
+🕵 Este endpoint permite listar a los aspirantes por el tipo de perfilamiento aplicado al aspirante (AUTOMÁTICO O MANUAL).
+
+##### Parámetros de entrada:
+
+- tipoDePerfil : AUTOMATICO / MANUAL (string)
+
+Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/private/listar_por_tipo_de_perfilamiento/AUTOMATICO```
+
+La API devolverá los aspirantes encontrados en formato JSON:
+```json
+[
+  {
+    "id": 0,
+    "aspirante": {
+      "id": 0,
+      "idAspirantePrueba": "string",
+      "programa": "BACK_END",
+      "nombre": "string",
+      "tipoDocumento": "TARJETA_DE_IDENTIDAD",
+      "numDocumento": 0,
+      "genero": "MUJER",
+      "edad": 0,
+      "nacimiento": "2024-02-20T15:43:25.841Z",
+      "celular": 0,
+      "email": "string",
+      "departamento": "AMAZONAS",
+      "ciudad": "string",
+      "direccionResidencia": "string",
+      "estrato": "UNO",
+      "reconocimiento": "NINGUN_GRUPO_ETNICO",
+      "discapacidad": "NINGUNA",
+      "poblacion": "DESPLAZADO",
+      "nivelEducativo": "PRIMARIA",
+      "ocupacion": "NO_ESTUDIO_NI_TRABAJO",
+      "ultimoTituloAcademico": "string",
+      "estudioTrabajo": "string",
+      "salario": "NO_APLICA",
+      "tiempoLibre": "string",
+      "estadoAspirante": "PROCESO_DE_PRUEBA",
+      "validadorDeTestGorilla": {
+        "id": 0,
+        "aspirante": "string",
+        "pruebaTerminada": true,
+        "puntajePromedio": 0
+      },
+      "perfilamientoAspirante": "string"
+    },
+    "perfilAspirante": "BECADO",
+    "tipoDePerfilamiento": "AUTOMATICO",
+    "responsablePerfilarManual": {
+      "id": 0,
+      "email": "string",
+      "contrasena": "string",
+      "rol": "ADMIN",
+      "usuarioResponsable": [
+        "string"
+      ],
+      "enabled": true,
+      "password": "string",
+      "username": "string",
+      "authorities": [
+        {
+          "authority": "string"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true
+    }
+  }
+]
+```
+
+## Listar aspirantes por programa :desktop_computer: :globe_with_meridians: :bar_chart: :cloud:
+
+### GET:/private/listar_aspirante_por_programa/{programa}
+
+📋 Este endpoint permite filtrar los aspirantes de acuerdo al programa asignado (BACK_END, FRONT_END, ANALISIS_DATOS, CLOUD).
+
+##### Parámetros de entrada:
+- programa: BACK_END / FRONT_END / ANALISIS_DATOS / CLOUD (string)
+
+Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/private/listar_aspirante_por_programa/BACK_END ```
+
+La API devolverá los aspirantes encontrados en formato JSON:
+
+```json
+[
+  {
+    "id": 0,
+    "idAspirantePrueba": "string",
+    "programa": "BACK_END",
+    "nombre": "string",
+    "tipoDocumento": "TARJETA_DE_IDENTIDAD",
+    "numDocumento": 0,
+    "genero": "MUJER",
+    "edad": 0,
+    "nacimiento": "2024-02-20T16:34:46.466Z",
+    "celular": 0,
+    "email": "string",
+    "departamento": "AMAZONAS",
+    "ciudad": "string",
+    "direccionResidencia": "string",
+    "estrato": "UNO",
+    "reconocimiento": "NINGUN_GRUPO_ETNICO",
+    "discapacidad": "NINGUNA",
+    "poblacion": "DESPLAZADO",
+    "nivelEducativo": "PRIMARIA",
+    "ocupacion": "NO_ESTUDIO_NI_TRABAJO",
+    "ultimoTituloAcademico": "string",
+    "estudioTrabajo": "string",
+    "salario": "NO_APLICA",
+    "tiempoLibre": "string",
+    "estadoAspirante": "PROCESO_DE_PRUEBA",
+    "validadorDeTestGorilla": {
+      "id": 0,
+      "aspirante": "string",
+      "pruebaTerminada": true,
+      "puntajePromedio": 0
+    },
+    "perfilamientoAspirante": "string"
   }
 ]
 ```
