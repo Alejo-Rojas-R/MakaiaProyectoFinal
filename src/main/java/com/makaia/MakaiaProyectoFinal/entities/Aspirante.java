@@ -1,14 +1,17 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "aspirante")
 public class Aspirante {
 
@@ -16,7 +19,7 @@ public class Aspirante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = true)
     private String idAspirantePrueba;
 
     @Enumerated(EnumType.STRING)
@@ -31,7 +34,7 @@ public class Aspirante {
     private TipoDocumento tipoDocumento;
 
     @Column(length = 20, nullable = false)
-    private Integer numDocumento;
+    private Long numDocumento;
 
     @Enumerated(EnumType.STRING)
 
@@ -44,7 +47,7 @@ public class Aspirante {
     private Date nacimiento;
 
     @Column(length = 15, nullable = false)
-    private Integer celular;
+    private Long celular;
 
     @Column(nullable = false)
     private String email;
@@ -104,7 +107,7 @@ public class Aspirante {
     public Aspirante() {
     }
 
-    public Aspirante(String idAspirantePrueba, Programa programa, String nombre, TipoDocumento tipoDocumento, Integer numDocumento, Genero genero, int edad, Date nacimiento, Integer celular, String email, Departamento departamento, String ciudad, String direccionResidencia, Estrato estrato, Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion, String ultimoTituloAcademico, String estudioTrabajo, Salario salario, String tiempoLibre) {
+    public Aspirante(String idAspirantePrueba, Programa programa, String nombre, TipoDocumento tipoDocumento, Long numDocumento, Genero genero, int edad, Date nacimiento, Long celular, String email, Departamento departamento, String ciudad, String direccionResidencia, Estrato estrato, Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion, NivelEducativo nivelEducativo, Ocupacion ocupacion, String ultimoTituloAcademico, String estudioTrabajo, Salario salario, String tiempoLibre) {
         this.idAspirantePrueba = idAspirantePrueba;
         this.programa = programa;
         this.nombre = nombre;
@@ -130,30 +133,12 @@ public class Aspirante {
         this.tiempoLibre = tiempoLibre;
     }
 
-
-
-    public void setPrograma(Programa programa) {
-        this.programa = programa;
-    }
-
-    public void setCelular(Integer celular) {
-        this.celular = celular;
-    }
-
-    public void setDireccionResidencia(String direccionResidencia) {
-        this.direccionResidencia = direccionResidencia;
-    }
-
-    public void setEstadoAspirante(EstadoAspirante estadoAspirante) {
-        this.estadoAspirante = estadoAspirante;
-    }
-
-    public void setId(Long id) {this.id = id;}
-
-    @OneToOne(mappedBy = "aspirante")
+    @JsonManagedReference
+    @OneToOne(mappedBy = "aspirante", cascade = CascadeType.ALL)
     private ValidadorDeTestGorilla validadorDeTestGorilla;
 
-    @OneToOne(mappedBy = "aspirante")
+    @JsonManagedReference
+    @OneToOne(mappedBy = "aspirante", cascade = CascadeType.ALL)
     private PerfilamientoAspirante perfilamientoAspirante;
 
 }

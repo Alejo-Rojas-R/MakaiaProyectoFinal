@@ -1,4 +1,5 @@
 package com.makaia.MakaiaProyectoFinal.controllers;
+import com.makaia.MakaiaProyectoFinal.dtos.ModificarAspiranteDTO;
 import com.makaia.MakaiaProyectoFinal.entities.Aspirante;
 import com.makaia.MakaiaProyectoFinal.entities.PerfilamientoAspirante;
 import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
@@ -26,29 +27,24 @@ public class PrivateController {
         return this.service.crearAspirante(dto);
     }
 
-    @GetMapping ("/actualzar_lista_de_pruebas_pendientes_por_finalizar")
+    @GetMapping ("/actualizar_lista_de_pruebas_pendientes_por_finalizar")
     public ResponseEntity<String> actualizarListaDePruebasPendientesPorFinalizarDeTestGorilla() {
         return this.service.actualizarListaDePruebasPendientesPorFinalizarDeTestGorilla();
     }
 
-    @PutMapping ("/modificar_programa")
-    public Aspirante modificarPrograma(@RequestParam("idAspirante") Long idAspirante, @RequestParam("Programa") Programa programa) {
-        return this.service.modificarPrograma(idAspirante, programa);
+    @PutMapping ("/modificar_aspirante")
+    public Aspirante modificarAspirante(@RequestParam("id") Long idAspirante, @RequestBody AspiranteDTO dto) {
+        return this.service.modificarAspirante(idAspirante, dto);
     }
 
-    @PutMapping ("/modificar_celular")
-    public Aspirante modificarCelular(@RequestParam("idAspirante") Long idAspirante, @RequestParam("Celular") Integer celular) {
-        return this.service.modificarCelular(idAspirante, celular);
-    }
-
-    @PutMapping ("/modificar_direccion")
-    public Aspirante modificarDireccionDeResidencia(@RequestParam("idAspirante") Long idAspirante, @RequestParam("Celular") String direccionDeResidencia) {
-        return this.service.modificarDireccionDeResidencia(idAspirante, direccionDeResidencia);
-    }
-
-    @PutMapping ("/modificar_perfil_aspirante")
-    public PerfilamientoAspirante modificarPerfilAspirante(@RequestParam("idAspirante") Long idAspirante, @RequestParam("idUsuario") Long idResponsableDePerfilarManual, @RequestParam("Perfil") PerfilAspirante nuevoPerfil) {
+    @PutMapping ("/modificar_perfil_aspirante/{id}")
+    public PerfilamientoAspirante modificarPerfilAspirante(@PathVariable("id") Long idAspirante, @RequestParam("idUsuario") Long idResponsableDePerfilarManual, @RequestParam("Perfil") PerfilAspirante nuevoPerfil) {
         return this.service.modificarPerfilAspirante(idAspirante, idResponsableDePerfilarManual,nuevoPerfil);
+    }
+
+    @GetMapping ("/leer_aspirante_por_id")
+    public Aspirante leerAspirante(@RequestParam("id") Long idAspirante) {
+        return this.service.leerAspirante(idAspirante);
     }
 
     @GetMapping ("/listar_aspirantes")
@@ -71,6 +67,13 @@ public class PrivateController {
         return this.service.listarPorTipoDePerfilamiento(tipoDePerfilamiento);
     }
 
+    @GetMapping ("/listar_por_documento")
+    public List<Aspirante> listarPorDocumento(@RequestParam("documento") String documento) {
+        return this.service.listarPorDocumento(documento);
+    }
 
-
+    @DeleteMapping("/eliminar_aspirante")
+    public ResponseEntity<String> eliminarAspirante(@RequestParam("id") Long id) {
+        return this.service.eliminarAspirante(id);
+    }
 }

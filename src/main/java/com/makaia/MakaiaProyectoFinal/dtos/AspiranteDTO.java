@@ -2,8 +2,11 @@ package com.makaia.MakaiaProyectoFinal.dtos;
 import com.makaia.MakaiaProyectoFinal.enums.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 @Getter
+@Setter
 public class AspiranteDTO {
 
     @NotNull
@@ -15,7 +18,7 @@ public class AspiranteDTO {
     @NotNull
     private TipoDocumento tipoDocumento;
     @NotNull
-    private Integer numDocumento;
+    private Long numDocumento;
     @NotNull
     private Genero genero;
     @NotNull
@@ -23,7 +26,7 @@ public class AspiranteDTO {
     @NotNull
     private Date nacimiento;
     @NotNull
-    private Integer celular;
+    private Long celular;
     @NotNull
     @Email(message = "El correo ingresado no es valido")
     private String email;
@@ -58,7 +61,7 @@ public class AspiranteDTO {
     }
 
     public AspiranteDTO(String idAspirantePrueba, Programa programa, String nombre, TipoDocumento tipoDocumento,
-                        Integer numDocumento, Genero genero, int edad, Date nacimiento, Integer celular, String email,
+                        Long numDocumento, Genero genero, int edad, Date nacimiento, Long celular, String email,
                         Departamento departamento, String ciudad, String direccionResidencia, Estrato estrato,
                         Reconocimiento reconocimiento, Discapacidad discapacidad, Poblacion poblacion,
                         NivelEducativo nivelEducativo, Ocupacion ocupacion, String ultimoTituloAcademico,

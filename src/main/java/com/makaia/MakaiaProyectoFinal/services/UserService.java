@@ -82,7 +82,7 @@ public class UserService {
 
             return ResponseEntity.ok(loginRes);
         } catch (BadCredentialsException e) {
-            ResponseErrorDTO errorResponse = new ResponseErrorDTO("Invalid username or password", 400);
+            ResponseErrorDTO errorResponse = new ResponseErrorDTO("Usuario o contraseña incorrectos", 400);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         } catch (Exception e) {
             ResponseErrorDTO errorResponse = new ResponseErrorDTO(e.getMessage(), 400);
