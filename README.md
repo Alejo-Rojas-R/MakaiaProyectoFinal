@@ -10,24 +10,19 @@ Esta API REST de Evaluación y Perfilamiento es un microservicio desarrollado co
 - Motor de base de datos en MySQL :dolphin: y persistencia de datos co JPA e Hibernate. 
 - Integración Continua con Github Actions :octocat: 
 - Despliegue con Railway :bullettrain_side:
+- Pruebas unitarias con JUnit
 
 Las principales dependencias utilizadas son: 👩‍💻
 
 - Spring Data JPA (Persiste bases de datos SQL utilizando Java Persistence API mediante Spring Data y Hibernate.)
 - Spring Web (Construye aplicaciones web, incluyendo RESTful, utilizando Spring MVC. Utiliza Apache Tomcat como contenedor integrado predeterminado.)
 - Spring Security (Autenticación JWT)
-- JUnit (Testeo de pruebas unitarias)
+- JUnit
 - Swagger (Documentación de la API)
 
 Adicionalmente esta API se encuentra documentada con Swagger y podrá probar la funcionalidad de cada una de las clases en los Endpoints disponibles en el siguiente link: 
 
 #### :link:[ Documentación en Swagger - Evaluacion y perfilamiento](https://evaluacion-y-perfilamiento.up.railway.app/swagger-ui/index.html#/)
-
-No olvidar tener a mano los permisos de acceso :closed_lock_with_key: de la aplicación:
-
-Todas las acciones permitidas:
-- userName: admin@gmail.com
-- password: admin123
 
 ## :computer: UML Modelo:
 
@@ -47,6 +42,12 @@ Se utiliza este patrón para transferencia de datos entre diferentes capas de la
 ![MER](https://github.com/Alejo-Rojas-R/MakaiaProyectoFinal/blob/main/diagramas/Actualizaci%C3%B3nER.png)
 
 ## :computer: Endpoints:
+
+No olvidar tener a mano los permisos de acceso :closed_lock_with_key: de la aplicación:
+
+Todas las acciones permitidas:
+- userName: admin@gmail.com
+- password: admin123
 
 ## Inicio de sesión 👨‍🔧
 
@@ -79,98 +80,6 @@ La API devolverá el JWT token que debera ser copiado para usarlo en los enpoint
 }
 ```
 
-## Creación de un aspirante :raising_hand:
-
-### POST: /private/registrar_aspirante
-
-🙍 Este endpoint permite **Crear** un nuevo aspirante en la base de datos con la información proporcionada en el cuerpo de la solicitud.
-
-##### Parámetros de entrada:
-
-- idAspirantePrueba: Clave auto incrementable (numero)
-- programa: Formacion academica al que se quiere postular (cadena de texto)
-- nombre: Nombre del aspirante (cadena de texto)
-- tipoDocumento: Tipo de documento del aspirante (cadena de texto)
-- numDocumento: Numero de documento del aspirante (numero)
-- genero: Genero del aspirante (cadena de texto)
-- edad: Edad del aspirante (numero)
-- nacimiento: Fecha de nacimiento del aspirante (fecha)
-- celular: Celular del aspirante (numero)
-- email: Email del aspirante(cadena de texto)
-- departamento: Departamento del aspirante (cadena de texto)
-- ciudad: Ciudad del aspirante(cadena de texto)
-- direccionResidencia: Dirección donde vive el aspirante (cadena de texto)
-- estrato: Estrato socioeconomico del aspirante (cadena de texto)
-- reconocimiento: Grupo etnico del aspirante (cadena de texto)
-- discapacidad: Discapacidad del aspirante (cadena de texto)
-- poblacion: Grupo poblacional del aspirante (cadena de texto)
-- nivelEducativo: Nivel educativo del aspirante (cadena de texto)
-- ocupacion: Ocupacion del aspirante (cadena de texto)
-- ultimoTituloAcademico: Ultimo titulo académico obtenido del aspirante (cadena de texto)
-- estudioTrabajo: El aspirante estudia o trabaja (cadena de texto)
-- salario: Salario del aspirante (cadena de texto)
-- tiempoLibre: tiempo libre del aspirante (cadena de texto)
-
-Ejemplo de solicitud:
-
-```https://evaluacion-y-perfilamiento.up.railway.app/private/registrar_aspirante```
-
-```java 
-{
-  "idAspirantePrueba": String,
-  "programa": String,
-  "nombre": String,
-  "tipoDocumento": String,
-  "numDocumento": Integer,
-  "genero": String,
-  "edad": Integer,
-  "nacimiento": Date,
-  "celular": Integer,
-  "email": String,
-  "departamento": String,
-  "ciudad": String,
-  "direccionResidencia": String,
-  "estrato": String,
-  "reconocimiento": String,
-  "discapacidad": String,
-  "poblacion": String,
-  "nivelEducativo": String,
-  "ocupacion": String,
-  "ultimoTituloAcademico": String,
-  "estudioTrabajo": String,
-  "salario": String,
-  "tiempoLibre": String
-}
-```
-
-La API devolverá el nuevo cliente creado en formato JSON:
-```json
-{
-  "idAspirantePrueba": "string",
-  "programa": "BACK_END",
-  "nombre": "string",
-  "tipoDocumento": "TARJETA_DE_IDENTIDAD",
-  "numDocumento": 0,
-  "genero": "MUJER",
-  "edad": 0,
-  "nacimiento": "2024-02-08T15:11:30.310Z",
-  "celular": 0,
-  "email": "string",
-  "departamento": "AMAZONAS",
-  "ciudad": "string",
-  "direccionResidencia": "string",
-  "estrato": "UNO",
-  "reconocimiento": "NINGUN_GRUPO_ETNICO",
-  "discapacidad": "NINGUNA",
-  "poblacion": "DESPLAZADO",
-  "nivelEducativo": "PRIMARIA",
-  "ocupacion": "NO_ESTUDIO_NI_TRABAJO",
-  "ultimoTituloAcademico": "string",
-  "estudioTrabajo": "string",
-  "salario": "NO_APLICA",
-  "tiempoLibre": "string"
-}
-```
 
 ## Listar aspirantes registrados :raising_hand:
 
@@ -435,3 +344,9 @@ Se utiliza GitHub Actions :octocat: para la integración continua. GitHub Action
 ## :arrow_double_up:  CD-Despliegue Continuo:
 
 Se utiliza Railway :bullettrain_side: para el despliegue continuo. La plataforma de alojamiento de aplicaciones proporciona una funcionalidad de despliegue continuo que permite implementar automáticamente cualquier cambio en el código en un entorno de producción. Al utilizar Github como fuente, Railway desencadena una construcción y despliegue automático en el entorno de producción en cada cambio en el repositorio sin la necesidad de intervención manual. 
+
+## Creditos
+
+#### Ingrid Piñerez: https://www.linkedin.com/in/ingridpinerez
+#### Jennifer Maigual: https://www.linkedin.com/in/jennifer-daniela-maigual-alvarez/
+#### Alejandro Rojas: https://www.linkedin.com/in/alejandro-rojas-rodriguez/
