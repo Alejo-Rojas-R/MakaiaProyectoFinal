@@ -1,5 +1,6 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -11,7 +12,8 @@ public class ValidadorDeTestGorilla {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aspirante_id",unique = true)
     private Aspirante aspirante ;
 

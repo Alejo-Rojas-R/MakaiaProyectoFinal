@@ -1,6 +1,7 @@
 package com.makaia.MakaiaProyectoFinal.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.makaia.MakaiaProyectoFinal.enums.PerfilAspirante;
 import com.makaia.MakaiaProyectoFinal.enums.TipoDePerfilamiento;
 import jakarta.persistence.*;
@@ -15,7 +16,8 @@ public class PerfilamientoAspirante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @OneToOne
+    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aspirante_id", unique = true)
     private Aspirante aspirante;
 
@@ -27,17 +29,18 @@ public class PerfilamientoAspirante {
     @NotNull
     private TipoDePerfilamiento tipoDePerfilamiento;
 
+    @JsonBackReference
     @ManyToOne(optional = false)
     private Usuario responsablePerfilarManual;
 
     public PerfilamientoAspirante() {
     }
 
-    public PerfilamientoAspirante(Aspirante aspirante, @NotNull PerfilAspirante perfilAspirante,
-                                  @NotNull TipoDePerfilamiento tipoDePerfilamiento) {
+    public PerfilamientoAspirante(Aspirante aspirante, @NotNull PerfilAspirante perfilAspirante, @NotNull TipoDePerfilamiento tipoDePerfilamiento, Usuario responsablePerfilarManual) {
         this.aspirante = aspirante;
         this.perfilAspirante = perfilAspirante;
         this.tipoDePerfilamiento = tipoDePerfilamiento;
+        this.responsablePerfilarManual = responsablePerfilarManual;
     }
 
 

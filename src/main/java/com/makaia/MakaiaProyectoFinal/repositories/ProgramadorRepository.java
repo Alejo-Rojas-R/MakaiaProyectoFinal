@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProgramadorReposiroty extends JpaRepository<ValidadorDeTestGorilla, Long> {
+public interface ProgramadorRepository extends JpaRepository<ValidadorDeTestGorilla, Long> {
     @Query
     List<ValidadorDeTestGorilla> findByPruebaTerminada(boolean pruebaTerminada);
 }
