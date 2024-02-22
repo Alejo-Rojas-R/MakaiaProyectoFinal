@@ -20,9 +20,11 @@ Las principales dependencias utilizadas son: 👩‍💻
 - JUnit
 - Swagger (Documentación de la API)
 
-Adicionalmente esta API se encuentra documentada con Swagger y podrá probar la funcionalidad de cada una de las clases en los Endpoints disponibles en el siguiente link: 
+Esta API tambien se encuentra documentada con Swagger y se podrá probar la funcionalidad de cada uno de los Endpoints en el siguiente link: 
 
-#### :link:[ Documentación en Swagger - Evaluacion y perfilamiento](https://evaluacion-y-perfilamiento.up.railway.app/swagger-ui/index.html#/)
+#### :link: [Documentación en Swagger - Evaluacion y perfilamiento](https://evaluacion-y-perfilamiento.up.railway.app/swagger-ui/index.html#/)
+
+
 
 ## :computer: UML Modelo:
 
@@ -345,8 +347,56 @@ Se utiliza GitHub Actions :octocat: para la integración continua. GitHub Action
 
 Se utiliza Railway :bullettrain_side: para el despliegue continuo. La plataforma de alojamiento de aplicaciones proporciona una funcionalidad de despliegue continuo que permite implementar automáticamente cualquier cambio en el código en un entorno de producción. Al utilizar Github como fuente, Railway desencadena una construcción y despliegue automático en el entorno de producción en cada cambio en el repositorio sin la necesidad de intervención manual. 
 
-## Creditos
+## 🖥️ Front-End:
 
-#### Ingrid Piñerez: https://www.linkedin.com/in/ingridpinerez
-#### Jennifer Maigual: https://www.linkedin.com/in/jennifer-daniela-maigual-alvarez/
-#### Alejandro Rojas: https://www.linkedin.com/in/alejandro-rojas-rodriguez/
+Adicionalmente se desarrolló un Front-End con React.js para consumir los endpoints y simular el funcionamiento de la aplicación en un ambiente de producción.
+
+#### :link: [Despliegue Front-End](https://evaluationandprofiling-production.up.railway.app/)
+
+#### :link: [Codigo Front-End](https://github.com/Alejo-Rojas-R/evaluation_and_profiling)
+
+## Colaboradores
+
+<table width="100%">
+    <thead>
+        <tr>
+            <th width="340px">Ingrid Piñerez</th>
+            <th width="340px">Jennifer Maigual</th>
+            <th width="340px">Alejandro Rojas</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center" style="width:33.33%;">
+            <img src="https://github.com/IngridPinerez.png" alt="Image 1" style="width:100px;"/>
+            <br/>
+            Back-End Developer
+            <br/>
+            <br/>
+            <a target="_blank" href="https://www.linkedin.com/in/ingridpinerez">
+                <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="" style="width:100px;"/>
+            </a>
+        </td>
+        <td align="center" style="width:33.33%;">
+            <img src="https://github.com/JenniferMaigual99.png" alt="Image 2" style="width:100px;">
+            <br/>
+            Back-End Developer <br/> & Tester
+            <br/>
+            <br/>
+            <a target="_blank" href="https://www.linkedin.com/in/jennifer-daniela-maigual-alvarez/">
+                <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="" style="width:100px;"/>
+            </a>
+        </td>
+        <td align="center" style="width:33.33%;">
+            <img src="https://github.com/Alejo-Rojas-R.png" alt="Image 3" style="width:100px;">
+            <br/>
+            Full-Stack Developer <br/> & Scrum Master
+            <br/>
+            <br/>
+            <a target="_blank" href="https://www.linkedin.com/in/alejandro-rojas-rodriguez/">
+                <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="" style="width:100px;"/>
+            </a>
+        </td>
+      </tr>
+    </tbody>
+</table>
