@@ -52,6 +52,7 @@ public class Usuario implements UserDetails {
         return this.getEmail();
     }
 
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -75,4 +76,5 @@ public class Usuario implements UserDetails {
     @OneToMany(mappedBy = "responsablePerfilarManual")
     List<PerfilamientoAspirante> usuarioResponsable;
 
+    public void setId(long id) {this.id = id;}
 }
