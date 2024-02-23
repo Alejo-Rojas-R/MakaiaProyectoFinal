@@ -57,7 +57,7 @@ Todas las acciones permitidas:
 
 🚪 Este endpoint permite dar acceso a la aplicación.
 
-##### Parámetros de entrada:
+##### Sin parámetros de entrada:
 
 - email: Email de autenticación (cadena de texto)
 - contrasena: Contraseña de autenticación (cadena de texto)
@@ -79,6 +79,175 @@ La API devolverá el JWT token que debera ser copiado para usarlo en los enpoint
 {
     "email": "admin@gmail.com",
     "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiIsImV4cCI6MTcwODExMTMyNH0.-ZwyywdhZmbcgln1FHHSYY3O_IRDSoEVXgTAUT08NMA"
+}
+```
+
+## Endpoint de creación de Aspirante :raising_hand:
+
+### POST:/private/registrar_aspirante
+
+🙍 **Crear** un nuevo aspirante en la base de datos con la información proporcionada en el cuerpo de la solicitud.
+
+##### Sin parámetros de entrada:
+
+Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/private/registrar_aspirante```
+
+La API devolverá el nuevo aspirante registrado en formato JSON:
+
+```json
+{
+"id": 37,
+  "idAspirantePrueba": "string",
+  "programa": "BACK_END",
+  "nombre": "string",
+  "tipoDocumento": "TARJETA_DE_IDENTIDAD",
+  "numDocumento": 0,
+  "genero": "MUJER",
+  "edad": 0,
+  "nacimiento": "2024-02-22T23:39:11.477+00:00",
+  "celular": 0,
+  "email": "string",
+  "departamento": "AMAZONAS",
+  "ciudad": "string",
+  "direccionResidencia": "string",
+  "estrato": "UNO",
+  "reconocimiento": "NINGUN_GRUPO_ETNICO",
+  "discapacidad": "NINGUNA",
+  "poblacion": "DESPLAZADO",
+  "nivelEducativo": "PRIMARIA",
+  "ocupacion": "NO_ESTUDIO_NI_TRABAJO",
+  "ultimoTituloAcademico": "string",
+  "estudioTrabajo": "string",
+  "salario": "NO_APLICA",
+  "tiempoLibre": "string",
+  "estadoAspirante": "PROCESO_DE_PRUEBA",
+  "validadorDeTestGorilla": null,
+  "perfilamientoAspirante": null
+}
+```
+
+### PUT: /private/modificar_aspirante
+
+♻ Este endpoint permite  **actualizar** los datos de un aspirante existente en la base de datos.
+
+##### Parámetros de entrada:
+
+- id: id del aspirante (integer)
+
+Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/private/modificar_aspirante?id=0```
+
+La API devolverá el aspirante con la información actualizada en formato JSON
+
+```json
+{
+  "id": 0,
+  "idAspirantePrueba": "string",
+  "programa": "BACK_END",
+  "nombre": "string",
+  "tipoDocumento": "TARJETA_DE_IDENTIDAD",
+  "numDocumento": 0,
+  "genero": "MUJER",
+  "edad": 0,
+  "nacimiento": "2024-02-22T23:58:14.145Z",
+  "celular": 0,
+  "email": "string",
+  "departamento": "AMAZONAS",
+  "ciudad": "string",
+  "direccionResidencia": "string",
+  "estrato": "UNO",
+  "reconocimiento": "NINGUN_GRUPO_ETNICO",
+  "discapacidad": "NINGUNA",
+  "poblacion": "DESPLAZADO",
+  "nivelEducativo": "PRIMARIA",
+  "ocupacion": "NO_ESTUDIO_NI_TRABAJO",
+  "ultimoTituloAcademico": "string",
+  "estudioTrabajo": "string",
+  "salario": "NO_APLICA",
+  "tiempoLibre": "string",
+  "estadoAspirante": "PROCESO_DE_PRUEBA",
+  "validadorDeTestGorilla": {
+    "id": 0,
+    "aspirante": "string",
+    "pruebaTerminada": true,
+    "puntajePromedio": 0
+  },
+  "perfilamientoAspirante": {
+    "id": 0,
+    "aspirante": "string",
+    "perfilAspirante": "BECADO",
+    "tipoDePerfilamiento": "AUTOMATICO",
+    "responsablePerfilarManual": {
+      "id": 0,
+      "email": "string",
+      "contrasena": "string",
+      "rol": "ADMIN",
+      "usuarioResponsable": [
+        "string"
+      ],
+      "enabled": true,
+      "password": "string",
+      "username": "string",
+      "authorities": [
+        {
+          "authority": "string"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true
+    }
+  }
+}
+```
+
+### PUT: /private/modificar_perfil_aspirante/{id}
+
+♻ Este endpoint permite  **actualizar** el perfil de un aspirante por id.
+
+##### Parámetros de entrada:
+
+-id: id  (integer)
+
+-idUsuario: id del usuario (integer) 
+
+-perfil: BECADO/COMERCIAL/PENDIENTE
+
+Ejemplo de solicitud:
+
+```https://evaluacion-y-perfilamiento.up.railway.app/private/modificar_perfil_aspirante/0?idUsuario=1&Perfil=BECADO```
+
+La API devolvera el aspirante con la actualización de su perfil en formato JSON.
+
+```json
+{
+  "id": 0,
+  "aspirante": "string",
+  "perfilAspirante": "BECADO",
+  "tipoDePerfilamiento": "AUTOMATICO",
+  "responsablePerfilarManual": {
+    "id": 0,
+    "email": "string",
+    "contrasena": "string",
+    "rol": "ADMIN",
+    "usuarioResponsable": [
+      "string"
+    ],
+    "enabled": true,
+    "password": "string",
+    "username": "string",
+    "authorities": [
+      {
+        "authority": "string"
+      }
+    ],
+    "accountNonExpired": true,
+    "accountNonLocked": true,
+    "credentialsNonExpired": true
+  }
 }
 ```
 
